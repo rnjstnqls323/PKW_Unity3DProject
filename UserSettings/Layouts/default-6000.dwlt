@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 100}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 0
-  controlID: 108
+  controlID: 87
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.16609919, y: 0.0014171789, z: -0.0005969393, w: 0.98650163}
     speed: 2
-    m_Value: {x: 0.16702005, y: 0.0024019214, z: -0.00076513784, w: 0.98595035}
+    m_Value: {x: -0.16609919, y: -0.0014171789, z: 0.0005969393, w: -0.9865016}
   m_Size:
     m_Target: 3.303312
     speed: 2
@@ -1351,9 +1351,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a0a80000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 4cecffff10eeffff0af0fffffaf0ffffc4f2ffffd2f4ffff1cfbffff
+      m_ExpandedIDs: 8ad2ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1473,8 +1473,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scenes
+    m_Folders: []
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1485,14 +1484,14 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\PKW_Unity3DProject
+  m_LastProjectPath: C:\GitHub3DProject\PKW_Unity3DProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: da590000
     m_LastClickedID: 23002
-    m_ExpandedIDs: 000000007ca4000016a6000018a600001aa600001ca600001ea6000020a6000022a6000024a6000026a6000028a600002aa600002ca600002ea6000030a6000032a6000034a6000036a6000038a600003aa600003ca600003ea6000040a6000042a6000044a6000046a6000048a600004aa600004ca600004ea60000
+    m_ExpandedIDs: 000000005ea5000066a5000072a5000076a500007aa500007ea5000082a5000086a5000082b4000084b4000086b4000088b400008ab400008cb400008eb4000090b4000092b4000094b4000096b4000098b400009ab400009cb400009eb40000a0b40000a2b40000a4b40000a6b40000a8b40000aab40000acb40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1521,7 +1520,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000007ca4000016a6000018a600001aa600001ca600001ea6000020a6000022a6000024a6000026a6000028a600002aa600002ca600002ea6000030a6000032a6000034a6000036a6000038a600003aa600003ca600003ea6000040a6000042a6000044a6000046a6000048a600004aa600004ca600004ea60000
+    m_ExpandedIDs: ffffffff000000005ea5000066a5000072a5000076a500007aa500007ea5000082a5000086a5000082b4000084b4000086b4000088b400008ab400008cb400008eb4000090b4000092b4000094b4000096b4000098b400009ab400009cb400009eb40000a0b40000a2b40000a4b40000a6b40000a8b40000aab40000acb40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
