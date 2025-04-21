@@ -17,8 +17,8 @@ public class Move : MonoBehaviour
     {
         if (_attack != null && _attack.IsAttacking)
         {
-            _animator.SetBool("isWalking", false);
-            _animator.SetBool("isRunning", false);
+            if (_animator != null)
+                _animator.SetFloat("Speed", 0f);
             return;
         }
 
@@ -34,18 +34,19 @@ public class Move : MonoBehaviour
         bool isMoving = moveDir.magnitude > 0f;
         bool isRunning = isMoving && Input.GetKey(KeyCode.LeftShift);
 
-        if (_animator != null)
-        {
-            _animator.SetBool("isWalking", isMoving && !isRunning);
-            _animator.SetBool("isRunning", isRunning);
-        }
+        float targetSpeed = 0f;
 
         if (isMoving)
         {
             transform.forward = moveDir;
 
-            float currentSpeed = isRunning ? _runSpeed : _walkSpeed;
-            transform.position += moveDir * currentSpeed * Time.deltaTime;
+            targetSpeed = isRunning ? 6f : 3f;
+            transform.position += moveDir * targetSpeed * Time.deltaTime;
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", targetSpeed);
         }
     }
 }
