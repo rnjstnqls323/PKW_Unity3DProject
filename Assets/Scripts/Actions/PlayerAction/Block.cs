@@ -3,7 +3,9 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     private Animator _animator;
-    private bool _isBlocking = false;
+
+    public bool IsBlocking { get; private set; }
+
 
     private void Awake()
     {
@@ -21,17 +23,18 @@ public class Block : MonoBehaviour
         {
             StopBlocking();
         }
+
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        IsBlocking = stateInfo.IsTag("Blocking");
     }
 
     private void StartBlocking()
     {
-        _isBlocking = true;
         _animator.SetBool("isBlocking", true);
     }
 
     private void StopBlocking()
     {
-        _isBlocking = false;
         _animator.SetBool("isBlocking", false);
     }
 }

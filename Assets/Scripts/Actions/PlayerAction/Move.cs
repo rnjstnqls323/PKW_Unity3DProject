@@ -4,6 +4,9 @@ public class Move : MonoBehaviour
 {
     private Animator _animator;
     private Attack _attack;
+    private Block _block;
+    private Skill _skill;
+
     private float _walkSpeed = 3f;
     private float _runSpeed = 6f;
 
@@ -11,11 +14,13 @@ public class Move : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _attack = GetComponent<Attack>();
+        _block = GetComponent<Block>();
+        _skill = GetComponent<Skill>();
     }
 
     void Update()
     {
-        if (_attack != null && _attack.IsAttacking)
+        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill))
         {
             if (_animator != null)
                 _animator.SetFloat("Speed", 0f);
