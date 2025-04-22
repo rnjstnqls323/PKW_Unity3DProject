@@ -17,15 +17,21 @@ public class Attack : MonoBehaviour
 
     private void Update()
     {
+        if (IsAttacking)
+            return;
+
         if ((_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill))
             return;
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             _animator.SetTrigger("Attack");
+            IsAttacking = true;
         }
-
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-        IsAttacking = stateInfo.IsTag("Attacking");
+    }
+    
+    public void EndAttack()
+    {
+        IsAttacking = false;
     }
 }
