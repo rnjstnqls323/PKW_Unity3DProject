@@ -429,7 +429,10 @@
 "Assets/Scripts/Actions/PlayerAction/Block.cs"
 "Assets/Scripts/Actions/PlayerAction/Move.cs"
 "Assets/Scripts/Actions/PlayerAction/Skill.cs"
+"Assets/Scripts/Camera/FollowCamera.cs"
 "Assets/Scripts/Characters/Player.cs"
+"Assets/Scripts/Manager/GameManager.cs"
+"Assets/Scripts/Utility/Singleton.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 /deterministic

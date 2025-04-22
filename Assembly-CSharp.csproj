@@ -63,8 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Actions\PlayerAction\Skill.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\Block.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\Move.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\Attack.cs" />
+    <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Characters\Player.cs" />
   </ItemGroup>
