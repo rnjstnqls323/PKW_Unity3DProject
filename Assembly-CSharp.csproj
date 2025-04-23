@@ -61,15 +61,17 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Actions\PlayerAction\Skill.cs" />
-    <Compile Include="Assets\Scripts\Actions\PlayerAction\Block.cs" />
+    <Compile Include="Assets\Scripts\Actions\MonsterAction\MinotaursAttack.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Actions\PlayerAction\Move.cs" />
-    <Compile Include="Assets\Scripts\Actions\PlayerAction\Attack.cs" />
+    <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightSkill.cs" />
+    <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightBlock.cs" />
+    <Compile Include="Assets\Scripts\Characters\PlayerKnight.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\Characters\Player.cs" />
+    <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightMove.cs" />
+    <Compile Include="Assets\Scripts\Actions\MonsterAction\AxeTrigger.cs" />
+    <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Triple Dungeon Pack\Blue Dungeon\blue dungeon_ReadMe.txt" />
