@@ -4,10 +4,12 @@ public class Block : MonoBehaviour
 {
     private Animator _animator;
 
-    public bool IsBlocking { get; private set; }
-
     [SerializeField]
     private Transform shieldTransform;
+    [SerializeField]
+    private BoxCollider _shieldCollider;
+
+    public bool IsBlocking { get; private set; }
 
     private Vector3 originalRotation;
     private bool isRotationSet = false;
@@ -18,6 +20,8 @@ public class Block : MonoBehaviour
         _animator = GetComponent<Animator>();
         if (shieldTransform != null)
             originalRotation = shieldTransform.localEulerAngles;
+        if (_shieldCollider != null)
+            _shieldCollider.enabled = false;
     }
 
     private void Update()
@@ -30,6 +34,8 @@ public class Block : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Q))
         {
             StopBlocking();
+            if (_shieldCollider != null)
+                _shieldCollider.enabled = false;
         }
 
         AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
@@ -61,5 +67,11 @@ public class Block : MonoBehaviour
         shieldTransform.localEulerAngles = new Vector3(currentRotation.x, currentRotation.y, 113.26f);
 
         isRotationSet = true;
+    }
+
+    public void EnableShieldCollider()
+    {
+        if (_shieldCollider != null)
+            _shieldCollider.enabled = true;
     }
 }
