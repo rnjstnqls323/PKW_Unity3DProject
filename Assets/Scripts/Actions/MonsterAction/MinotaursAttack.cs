@@ -3,23 +3,23 @@ using UnityEngine;
 public class MinotaursAttack : MonoBehaviour
 {
     [SerializeField]
-    private BoxCollider axeCollider;
+    private BoxCollider _axeCollider;
 
     private void Start()
     {
-        if (axeCollider != null)
-            axeCollider.enabled = false;
+        if (_axeCollider != null)
+            _axeCollider.enabled = false;
     }
 
     public void EnableAxeCollider()
     {
-        if (axeCollider != null)
-            axeCollider.enabled = true;
+        if (_axeCollider != null)
+            _axeCollider.enabled = true;
     }
 
     public void DisableAxeCollider()
     {
-        if (axeCollider != null)
-            axeCollider.enabled = false;
+        if (_axeCollider != null)
+            _axeCollider.enabled = false;
     }
 }

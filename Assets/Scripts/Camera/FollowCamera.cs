@@ -4,8 +4,8 @@ public class FollowCamera : MonoBehaviour
 {
     private Transform _target;
 
-    private Vector3 targetPos;
-    private Vector3 destPos;
+    private Vector3 _targetPos;
+    private Vector3 _destPos;
 
     private float _distance = 9.89f;
     private float _height = 16.8f;
@@ -20,18 +20,18 @@ public class FollowCamera : MonoBehaviour
     {
         _target = GameManager.Instance.Player.transform;
 
-        targetPos = _target.position;
-        destPos = targetPos + Vector3.back * _distance + Vector3.up * _height;
-        transform.position = destPos;
+        _targetPos = _target.position;
+        _destPos = _targetPos + Vector3.back * _distance + Vector3.up * _height;
+        transform.position = _destPos;
     }
 
     private void LateUpdate()
     {
         if (!_target) return;
 
-        targetPos = _target.position;
-        destPos = targetPos + Vector3.back * _distance + Vector3.up * _height;
+        _targetPos = _target.position;
+        _destPos = _targetPos + Vector3.back * _distance + Vector3.up * _height;
 
-        transform.position = Vector3.Lerp(transform.position, destPos, _moveDamping * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, _destPos, _moveDamping * Time.deltaTime);
     }
 }

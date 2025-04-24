@@ -9,7 +9,10 @@ public class PlayerKnight : MonoBehaviour
     }
 
     private Animator _animator;
+    private int _level = 1;
     private int _hp = 10;
+    private int _mp = 5;
+    private int _attackPower = 1;
 
     private void Awake()
     {
@@ -19,7 +22,23 @@ public class PlayerKnight : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"플레이어 시작 체력: {_hp}");
+        Debug.Log($"플레이어 시작 스테이터스: 레벨: {_level}, HP: {_hp}, MP: {_mp}, 공격력: {_attackPower}");
+    }
+
+    private void Update()
+    {
+        LevelUp();
+    }
+
+    private void LevelUp()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _level++;
+            _hp += 50;
+            _mp += 10;
+            _attackPower += 3;
+        }
     }
 
     public void GetDamage(int damage)

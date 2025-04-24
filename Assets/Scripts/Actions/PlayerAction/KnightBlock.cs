@@ -5,7 +5,7 @@ public class KnightBlock : MonoBehaviour
     private Animator _animator;
 
     [SerializeField]
-    private Transform shieldTransform;
+    private Transform _shieldTransform;
     [SerializeField]
     private BoxCollider _shieldCollider;
 
@@ -18,8 +18,8 @@ public class KnightBlock : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        if (shieldTransform != null)
-            originalRotation = shieldTransform.localEulerAngles;
+        if (_shieldTransform != null)
+            originalRotation = _shieldTransform.localEulerAngles;
         if (_shieldCollider != null)
             _shieldCollider.enabled = false;
     }
@@ -51,20 +51,20 @@ public class KnightBlock : MonoBehaviour
     {
         _animator.SetBool("isBlocking", false);
 
-        if (shieldTransform != null && isRotationSet)
+        if (_shieldTransform != null && isRotationSet)
         {
-            shieldTransform.localEulerAngles = originalRotation;
+            _shieldTransform.localEulerAngles = originalRotation;
             isRotationSet = false;
         }
     }
 
     public void SetShieldRotation()
     {
-        if (shieldTransform == null)
+        if (_shieldTransform == null)
             return;
 
-        Vector3 currentRotation = shieldTransform.localEulerAngles;
-        shieldTransform.localEulerAngles = new Vector3(currentRotation.x, currentRotation.y, 113.26f);
+        Vector3 currentRotation = _shieldTransform.localEulerAngles;
+        _shieldTransform.localEulerAngles = new Vector3(currentRotation.x, currentRotation.y, 113.26f);
 
         isRotationSet = true;
     }
