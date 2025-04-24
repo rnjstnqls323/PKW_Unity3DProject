@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Actions\MonsterAction\MinotaursAttack.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightSkill.cs" />
+    <Compile Include="Assets\Scripts\ColliderTriggers\MeleeWeaponTrigger.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightBlock.cs" />
     <Compile Include="Assets\Scripts\Characters\PlayerKnight.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightMove.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightAttack.cs" />
     <Compile Include="Assets\Scripts\Characters\Monster\Minotaurs.cs" />
-    <Compile Include="Assets\Scripts\Actions\MonsterAction\MeleeWeaponTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Triple Dungeon Pack\Blue Dungeon\blue dungeon_ReadMe.txt" />
