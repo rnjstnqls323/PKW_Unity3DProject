@@ -244,15 +244,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31
+      value: 32.58699
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.49
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.4
+      value: 23.829584
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77334158048b1d428816b3bcb31b0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldTransform: {fileID: 4128412729769583942}
+  _shieldTransform: {fileID: 4128412729769583942}
   _shieldCollider: {fileID: 6894566617459556876}
 --- !u!114 &2668548139739804141
 MonoBehaviour:

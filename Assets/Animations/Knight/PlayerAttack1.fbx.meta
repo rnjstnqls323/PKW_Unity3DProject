@@ -55,22 +55,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.99999994
-        functionName: EndAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.22543353
+      - time: 0.38297912
         functionName: EnableSwordCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.63583815
+      - time: 0.45507532
         functionName: DisableSwordCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99999994
+        functionName: EndAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

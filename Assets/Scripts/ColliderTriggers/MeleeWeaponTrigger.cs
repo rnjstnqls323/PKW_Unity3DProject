@@ -11,7 +11,7 @@ public class MeleeWeaponTrigger : MonoBehaviour
 
         if (other.CompareTag("Monster"))
         {
-            Minotaurs.Instance.GetDamage(1);
+            Minotaurs.Instance.GetDamage(PlayerKnight.Instance.AttackPower);
         }
     }
 }
