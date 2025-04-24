@@ -8,35 +8,35 @@ public class PlayerKnight : MonoBehaviour
         get { return _instance; }
     }
 
-    private Animator animator;
-    private int hp = 10;
+    private Animator _animator;
+    private int _hp = 10;
 
     private void Awake()
     {
         _instance = this;
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        Debug.Log($"플레이어 시작 체력: {hp}");
+        Debug.Log($"플레이어 시작 체력: {_hp}");
     }
 
-    public void TakeDamage(int damage)
+    public void GetDamage(int damage)
     {
-        hp -= damage;
-        Debug.Log($"플레이어 피격! 현재 HP: {hp}");
+        _hp -= damage;
+        Debug.Log($"플레이어 피격! 현재 HP: {_hp}");
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
-            hp = 0;
+            _hp = 0;
             Debug.Log("플레이어 사망");
 
-            animator.SetTrigger("Death");
+            _animator.SetTrigger("Death");
         }
         else
         {
-            animator.SetTrigger("GetDamage");
+            _animator.SetTrigger("GetDamage");
         }
     }
 
