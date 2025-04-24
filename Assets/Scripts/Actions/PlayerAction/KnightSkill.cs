@@ -22,13 +22,30 @@ public class KnightSkill : MonoBehaviour
             return;
 
         AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-        IsSkill = stateInfo.IsTag("Skill");
+        IsSkill = stateInfo.IsTag("KnightSkill");
+
         if (IsSkill)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _animator.SetTrigger("Skill3");
+            _animator.SetTrigger("TripleSlashSkill");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _animator.SetTrigger("JumpSkill");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _animator.SetTrigger("PowerUpSkill");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            _animator.SetTrigger("SpinSlashSkill");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            _animator.SetTrigger("ChargeSkill");
         }
     }
 }
