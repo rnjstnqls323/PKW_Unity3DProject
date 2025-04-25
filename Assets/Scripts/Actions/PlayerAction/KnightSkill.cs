@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class KnightSkill : MonoBehaviour
@@ -8,6 +9,14 @@ public class KnightSkill : MonoBehaviour
 
     public bool IsSkill { get; private set; }
 
+    private Dictionary<string, int> _skillMpCosts = new Dictionary<string, int>()
+    {
+        { "TripleSlashSkill", 3 },
+        { "JumpSkill", 5 },
+        { "PowerUpSkill", 2 },
+        { "SpinSlashSkill", 4 },
+        { "ChargeSkill", 6 }
+    };
 
     private void Awake()
     {
@@ -29,23 +38,46 @@ public class KnightSkill : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _animator.SetTrigger("TripleSlashSkill");
+            UseSkill("TripleSlashSkill");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            _animator.SetTrigger("JumpSkill");
+            UseSkill("JumpSkill");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            _animator.SetTrigger("PowerUpSkill");
+            UseSkill("PowerUpSkill");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            _animator.SetTrigger("SpinSlashSkill");
+            UseSkill("SpinSlashSkill");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            _animator.SetTrigger("ChargeSkill");
+            UseSkill("ChargeSkill");
+        }
+    }
+
+    private void UseSkill(string triggerName)
+    {
+        PlayerKnight player = PlayerKnight.Instance;
+
+        if (player == null)
+            return;
+
+        int mpCost = 0;
+        if (_skillMpCosts.TryGetValue(triggerName, out mpCost))
+        {
+            if (player.CurMp >= mpCost)
+            {
+                player.ConsumeMp(mpCost);
+                _animator.SetTrigger(triggerName);
+                Debug.Log($"{triggerName} 스킬 사용! MP {mpCost} 소모 (남은 MP: {player.CurMp})");
+            }
+            else
+            {
+                Debug.Log($"MP가 부족하여 {triggerName} 스킬을 사용할 수 없습니다. (필요 MP: {mpCost})");
+            }
         }
     }
 }
