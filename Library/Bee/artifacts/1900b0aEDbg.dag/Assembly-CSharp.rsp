@@ -436,6 +436,7 @@
 "Assets/Scripts/Characters/PlayerKnight.cs"
 "Assets/Scripts/ColliderTriggers/MeleeWeaponTrigger.cs"
 "Assets/Scripts/Manager/GameManager.cs"
+"Assets/Scripts/UI/SkillWindow.cs"
 "Assets/Scripts/Utility/Singleton.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0

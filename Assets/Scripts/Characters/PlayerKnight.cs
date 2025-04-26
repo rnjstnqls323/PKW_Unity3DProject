@@ -73,6 +73,11 @@ public class PlayerKnight : MonoBehaviour
         _curMp = _maxMp;
         _attackPower += 3;
 
+        if (SkillWindow.Instance != null)
+        {
+            SkillWindow.Instance.AddSkillPoint(3);
+        }
+
         UpdateHpBar();
         UpdateMpBar();
 
