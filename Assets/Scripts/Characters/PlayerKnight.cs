@@ -11,15 +11,20 @@ public class PlayerKnight : MonoBehaviour
     private Animator _animator;
     private Image _hpBarImage;
     private Image _mpBarImage;
+    private Image _expBarImage;
     private TextMeshProUGUI _hpBarText;
     private TextMeshProUGUI _mpBarText;
+    private TextMeshProUGUI _expBarText;
 
     private int _level;
     private int _maxLevel = 25;
+    private int _levelUpCount;
     private int _curHp;
     private int _maxHp;
     private int _curMp;
     private int _maxMp;
+    private float _curExp;
+    private float _maxExp;
     private int _attackPower;
     public int AttackPower { get { return _attackPower; } }
     public int CurMp { get { return _curMp; } }
@@ -36,26 +41,56 @@ public class PlayerKnight : MonoBehaviour
         _hpBarText = GameObject.Find("PlayerHpBarText").GetComponentInChildren<TextMeshProUGUI>();
         _mpBarImage = GameObject.Find("PlayerMpBar").GetComponent<Image>();
         _mpBarText = GameObject.Find("PlayerMpBarText").GetComponentInChildren<TextMeshProUGUI>();
+        _expBarImage = GameObject.Find("PlayerExpBar").GetComponent<Image>();
+        _expBarText = GameObject.Find("PlayerExpBarText").GetComponentInChildren<TextMeshProUGUI>();
 
         _level = 1;
         _maxHp = 10;
         _curHp = _maxHp;
         _maxMp = 5;
         _curMp = _maxMp;
+        _maxExp = 100f;
+        _curExp = 0f;
         _attackPower = 1;
+        _levelUpCount = 0;
 
         UpdateHpBar();
         UpdateMpBar();
+        UpdateExpBar();
 
         Debug.Log($"플레이어 시작 스테이터스:\n레벨: {_level}\nHP: {_curHp}\nMP: {_curMp}\n공격력: {_attackPower}");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        //if (Input.GetKey(KeyCode.O))
+        //{
+        //    GainExp(50.95f);
+        //}
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GainExp(50.95f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
         {
             LevelUp();
         }
+    }
+
+    private void GainExp(float amount)
+    {
+        _curExp += amount;
+        //Debug.Log($"경험치 획득: {amount} / 현재 경험치: {_curExp} / 최대 경험치: {_maxExp}");
+
+        while (_curExp >= _maxExp)
+        {
+            _curExp -= _maxExp;
+            LevelUp();
+        }
+
+        UpdateExpBar();
     }
 
     private void LevelUp()
@@ -63,15 +98,20 @@ public class PlayerKnight : MonoBehaviour
         if (_level >= _maxLevel)
         {
             Debug.Log($"최고레벨{_maxLevel} 달성");
+            _curExp = _maxExp;
+            UpdateExpBar();
             return;
         }
 
         _level += 1;
+        _levelUpCount += 1;
         _maxHp += 50;
         _curHp = _maxHp;
         _maxMp += 10;
         _curMp = _maxMp;
         _attackPower += 3;
+
+        _maxExp += 40.5f * Mathf.Pow(2, _levelUpCount);
 
         if (SkillWindow.Instance != null)
         {
@@ -80,6 +120,7 @@ public class PlayerKnight : MonoBehaviour
 
         UpdateHpBar();
         UpdateMpBar();
+        UpdateExpBar();
 
         Debug.Log($"플레이어 현제 스테이터스:\n레벨: {_level}\nHP: {_curHp}\nMP: {_curMp}\n공격력: {_attackPower}");
     }
@@ -127,6 +168,18 @@ public class PlayerKnight : MonoBehaviour
         if (_mpBarText != null)
         {
             _mpBarText.text = $"{_curMp} / {_maxMp}";
+        }
+    }
+
+    private void UpdateExpBar()
+    {
+        if (_expBarImage != null)
+            _expBarImage.fillAmount = _curExp / _maxExp;
+
+        if (_expBarText != null)
+        {
+            float percent = (_curExp / _maxExp) * 100f;
+            _expBarText.text = $"{percent:F1}%";
         }
     }
 
