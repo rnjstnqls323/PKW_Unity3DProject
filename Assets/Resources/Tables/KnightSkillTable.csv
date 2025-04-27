@@ -1,4 +1,4 @@
-key,name,,mpCost,attackPower,Duration,coolTime,playerLevel,curLevel,maxLevel
+Key,Name,Description,MpCost,AttackPower,Duration,CoolTime,PlayerLevel,CurLevel,MaxLevel
 101,TripleSlash,검으로 3번연속 벤다,3,3,0,5,1,1,15
 102,BladeDrop,높게 점프하여 적을 일도양단한다,5,11,0,10,3,0,15
 103,PowerUp,자신의 공격력을 30초 동안 상승시킨다,2,2,30,15,7,0,15

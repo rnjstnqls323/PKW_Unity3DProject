@@ -11,6 +11,8 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private Canvas canvas;
 
+    public int skillKey;
+
     void Start()
     {
         canvas = GetComponentInParent<Canvas>();
@@ -18,6 +20,14 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        PlayerSkillData skillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
+
+        if (skillData.CurLevel <= 0)
+        {
+            Debug.Log($"{skillData.Name} 스킬 레벨이 0이라 배치할 수 없습니다.");
+            return;
+        }
+
         draggingIcon = Instantiate(iconPrefab, canvas.transform);
         draggingIcon.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
 
@@ -30,6 +40,9 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (draggingIcon == null)
+            return;
+
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
@@ -42,6 +55,9 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (draggingIcon == null)
+            return;
+
         GameObject target = GetSlotUnderPointer(eventData);
         if (target != null)
         {

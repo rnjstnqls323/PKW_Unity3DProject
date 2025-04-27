@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SkillWindow : MonoBehaviour
 {
     public static SkillWindow Instance;
+    public int CurrentSkillPoint => skillPoint;
 
     public GameObject skillWindowUI;
     public Button closeButton;

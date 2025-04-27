@@ -6,17 +6,9 @@ public class KnightSkill : MonoBehaviour
     private Animator _animator;
     private KnightAttack _attack;
     private KnightBlock _block;
+    private PlayerSkillData _playerSkillData;
 
     public bool IsSkill { get; private set; }
-
-    private Dictionary<string, int> _skillMpCosts = new Dictionary<string, int>()
-    {
-        { "TripleSlashSkill", 3 },
-        { "JumpSkill", 5 },
-        { "PowerUpSkill", 2 },
-        { "SpinSlashSkill", 4 },
-        { "ChargeSkill", 6 }
-    };
 
     private void Awake()
     {
@@ -30,53 +22,37 @@ public class KnightSkill : MonoBehaviour
         if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking))
             return;
 
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-        IsSkill = stateInfo.IsTag("KnightSkill");
-
         if (IsSkill)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            UseSkill("TripleSlashSkill");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            UseSkill("JumpSkill");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            UseSkill("PowerUpSkill");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            UseSkill("SpinSlashSkill");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            UseSkill("ChargeSkill");
-        }
+        HandleSkillInput(KeyCode.Alpha1, 101, "TripleSlashSkill");
+        HandleSkillInput(KeyCode.Alpha2, 102, "JumpSkill");
+        HandleSkillInput(KeyCode.Alpha3, 103, "PowerUpSkill");
+        HandleSkillInput(KeyCode.Alpha4, 104, "SpinSlashSkill");
+        HandleSkillInput(KeyCode.Alpha5, 105, "ChargeSkill");
     }
 
-    private void UseSkill(string triggerName)
+    private void HandleSkillInput(KeyCode keyCode, int skillKey, string animationTrigger)
     {
-        PlayerKnight player = PlayerKnight.Instance;
-
-        if (player == null)
-            return;
-
-        int mpCost = 0;
-        if (_skillMpCosts.TryGetValue(triggerName, out mpCost))
+        if (Input.GetKeyDown(keyCode))
         {
-            if (player.CurMp >= mpCost)
+            _playerSkillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
+
+            if (_playerSkillData.CurLevel <= 0)
             {
-                player.ConsumeMp(mpCost);
-                _animator.SetTrigger(triggerName);
-                Debug.Log($"{triggerName} 스킬 사용! MP {mpCost} 소모 (남은 MP: {player.CurMp})");
+                Debug.Log($"{_playerSkillData.Name} 스킬 레벨이 0이라 사용할 수 없습니다.");
+                return;
+            }
+
+            if (PlayerKnight.Instance.CurMp >= _playerSkillData.MpCost)
+            {
+                PlayerKnight.Instance.ConsumeMp(_playerSkillData.MpCost);
+                _animator.SetTrigger(animationTrigger);
+                Debug.Log($"{_playerSkillData.Name} 스킬 사용! MP {_playerSkillData.MpCost} 소모");
             }
             else
             {
-                Debug.Log($"MP가 부족하여 {triggerName} 스킬을 사용할 수 없습니다. (필요 MP: {mpCost})");
+                Debug.Log($"{_playerSkillData.Name} 스킬 사용 불가 - MP 부족");
             }
         }
     }

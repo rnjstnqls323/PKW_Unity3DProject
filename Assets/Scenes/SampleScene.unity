@@ -1051,6 +1051,7 @@ GameObject:
   - component: {fileID: 91792724}
   - component: {fileID: 91792726}
   - component: {fileID: 91792725}
+  - component: {fileID: 91792727}
   m_Layer: 5
   m_Name: SkillIconWindow1
   m_TagString: Untagged
@@ -1116,6 +1117,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91792723}
   m_CullTransparentMesh: 1
+--- !u!114 &91792727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91792723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71baed1ca3bb5ed4180797774e16df61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillKey: 101
+  skillLevelText: {fileID: 1512396850}
+  plusButton: {fileID: 2113792630}
+  minusButton: {fileID: 816894676}
+  resetButton: {fileID: 1817581220}
+  checkButton: {fileID: 834941230}
 --- !u!1001 &94766580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7225,8 +7244,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 166705041}
   m_HandleRect: {fileID: 166705040}
   m_Direction: 2
-  m_Value: 0.9999991
-  m_Size: 0.821508
+  m_Value: 1.0000013
+  m_Size: 0.82150793
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12602,6 +12621,7 @@ GameObject:
   - component: {fileID: 884756601}
   - component: {fileID: 884756603}
   - component: {fileID: 884756602}
+  - component: {fileID: 884756604}
   m_Layer: 5
   m_Name: SkillIconWindow4
   m_TagString: Untagged
@@ -12667,6 +12687,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884756600}
   m_CullTransparentMesh: 1
+--- !u!114 &884756604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884756600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71baed1ca3bb5ed4180797774e16df61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillKey: 104
+  skillLevelText: {fileID: 2105407471}
+  plusButton: {fileID: 1758798711}
+  minusButton: {fileID: 263827824}
+  resetButton: {fileID: 1335107892}
+  checkButton: {fileID: 1908461220}
 --- !u!1 &893704978
 GameObject:
   m_ObjectHideFlags: 0
@@ -15755,7 +15793,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -417.9995, y: 180.95052}
+  m_AnchoredPosition: {x: -417.9995, y: 180.94986}
   m_SizeDelta: {x: 189, y: 918.0996}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1130273392
@@ -16902,6 +16940,7 @@ GameObject:
   - component: {fileID: 1253282518}
   - component: {fileID: 1253282520}
   - component: {fileID: 1253282519}
+  - component: {fileID: 1253282521}
   m_Layer: 5
   m_Name: SkillIconWindow3
   m_TagString: Untagged
@@ -16967,6 +17006,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253282517}
   m_CullTransparentMesh: 1
+--- !u!114 &1253282521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253282517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71baed1ca3bb5ed4180797774e16df61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillKey: 103
+  skillLevelText: {fileID: 631673410}
+  plusButton: {fileID: 617143389}
+  minusButton: {fileID: 629529}
+  resetButton: {fileID: 1360774300}
+  checkButton: {fileID: 840262420}
 --- !u!4 &1256997996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4302710928754906, guid: a578ee0f8198a4d43909700c19cbf82d, type: 3}
@@ -17491,6 +17548,7 @@ GameObject:
   - component: {fileID: 1325074446}
   - component: {fileID: 1325074448}
   - component: {fileID: 1325074447}
+  - component: {fileID: 1325074449}
   m_Layer: 5
   m_Name: SkillIconWindow5
   m_TagString: Untagged
@@ -17556,6 +17614,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325074445}
   m_CullTransparentMesh: 1
+--- !u!114 &1325074449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325074445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71baed1ca3bb5ed4180797774e16df61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillKey: 105
+  skillLevelText: {fileID: 264003364}
+  plusButton: {fileID: 707118496}
+  minusButton: {fileID: 1632276934}
+  resetButton: {fileID: 1053659165}
+  checkButton: {fileID: 1275068711}
 --- !u!1001 &1328791402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21416,6 +21492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655260189}
   - component: {fileID: 1655260188}
+  - component: {fileID: 1655260191}
   - component: {fileID: 1655260190}
   m_Layer: 0
   m_Name: GameManager
@@ -21466,6 +21543,18 @@ MonoBehaviour:
   skillWindowUI: {fileID: 2083223752}
   closeButton: {fileID: 427255054}
   skillPointText: {fileID: 184028719}
+--- !u!114 &1655260191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655260187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb358f00261e8a24fa7da50e6e8931b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1659728015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28082,6 +28171,7 @@ GameObject:
   - component: {fileID: 2117849562}
   - component: {fileID: 2117849564}
   - component: {fileID: 2117849563}
+  - component: {fileID: 2117849565}
   m_Layer: 5
   m_Name: SkillIconWindow2
   m_TagString: Untagged
@@ -28147,6 +28237,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117849561}
   m_CullTransparentMesh: 1
+--- !u!114 &2117849565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117849561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71baed1ca3bb5ed4180797774e16df61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillKey: 102
+  skillLevelText: {fileID: 932009134}
+  plusButton: {fileID: 507391994}
+  minusButton: {fileID: 534029075}
+  resetButton: {fileID: 869630703}
+  checkButton: {fileID: 1388263559}
 --- !u!1001 &2125462674
 PrefabInstance:
   m_ObjectHideFlags: 0

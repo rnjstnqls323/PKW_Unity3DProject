@@ -71,8 +71,10 @@
     <Compile Include="Assets\Scripts\Characters\PlayerKnight.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
+    <Compile Include="Assets\Scripts\UI\SkillLevelButton.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightMove.cs" />
+    <Compile Include="Assets\Scripts\Manager\PlayerSkillDataManager.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightAttack.cs" />
     <Compile Include="Assets\Scripts\Characters\Monster\Minotaurs.cs" />
   </ItemGroup>
