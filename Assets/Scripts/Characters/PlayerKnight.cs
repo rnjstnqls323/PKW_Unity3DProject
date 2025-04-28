@@ -15,6 +15,7 @@ public class PlayerKnight : MonoBehaviour
     private TextMeshProUGUI _hpBarText;
     private TextMeshProUGUI _mpBarText;
     private TextMeshProUGUI _expBarText;
+    private TextMeshProUGUI _levelText;
 
     private int _level;
     private int _maxLevel = 25;
@@ -43,6 +44,7 @@ public class PlayerKnight : MonoBehaviour
         _mpBarText = GameObject.Find("PlayerMpBarText").GetComponentInChildren<TextMeshProUGUI>();
         _expBarImage = GameObject.Find("PlayerExpBar").GetComponent<Image>();
         _expBarText = GameObject.Find("PlayerExpBarText").GetComponentInChildren<TextMeshProUGUI>();
+        _levelText = GameObject.Find("LevelText").GetComponent<TextMeshProUGUI>();
 
         _level = 1;
         _maxHp = 10;
@@ -57,6 +59,7 @@ public class PlayerKnight : MonoBehaviour
         UpdateHpBar();
         UpdateMpBar();
         UpdateExpBar();
+        UpdateLevelText();
 
         Debug.Log($"플레이어 시작 스테이터스:\n레벨: {_level}\nHP: {_curHp}\nMP: {_curMp}\n공격력: {_attackPower}");
     }
@@ -121,6 +124,7 @@ public class PlayerKnight : MonoBehaviour
         UpdateHpBar();
         UpdateMpBar();
         UpdateExpBar();
+        UpdateLevelText();
 
         Debug.Log($"플레이어 현제 스테이터스:\n레벨: {_level}\nHP: {_curHp}\nMP: {_curMp}\n공격력: {_attackPower}");
     }
@@ -142,6 +146,14 @@ public class PlayerKnight : MonoBehaviour
         else
         {
             _animator.SetTrigger("GetDamage");
+        }
+    }
+
+    private void UpdateLevelText()
+    {
+        if (_levelText != null)
+        {
+            _levelText.text = $"LV: {_level}";
         }
     }
 
