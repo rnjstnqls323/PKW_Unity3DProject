@@ -7,6 +7,8 @@ public class KnightSkill : MonoBehaviour
     private KnightAttack _attack;
     private KnightBlock _block;
     private PlayerSkillData _playerSkillData;
+    public static int CurrentSkillAttackPower { get; set; } = 0;
+    public static int CurrentSkillKey { get; set; } = -1;
 
     public bool IsSkill { get; private set; }
 
@@ -69,6 +71,17 @@ public class KnightSkill : MonoBehaviour
         else
         {
             Debug.Log($"{skillData.Name} 스킬 사용 불가 - MP 부족");
+        }
+
+        if (skillKey != 103)
+        {
+            CurrentSkillAttackPower = skillData.AttackPower;
+            CurrentSkillKey = skillKey;
+        }
+        else
+        {
+            CurrentSkillAttackPower = 0;
+            CurrentSkillKey = -1;
         }
     }
 

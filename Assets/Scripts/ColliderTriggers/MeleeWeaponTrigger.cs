@@ -11,7 +11,18 @@ public class MeleeWeaponTrigger : MonoBehaviour
 
         if (other.CompareTag("Monster"))
         {
-            Minotaurs.Instance.GetDamage(PlayerKnight.Instance.AttackPower);
+            int damage = 0;
+
+            if (KnightSkill.CurrentSkillKey != -1)
+            {
+                damage = KnightSkill.CurrentSkillAttackPower;
+            }
+            else
+            {
+                damage = PlayerKnight.Instance.AttackPower;
+            }
+
+            Minotaurs.Instance.GetDamage(damage);
         }
     }
 }

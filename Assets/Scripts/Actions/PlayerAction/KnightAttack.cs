@@ -51,4 +51,19 @@ public class KnightAttack : MonoBehaviour
         if (_swordCollider != null)
             _swordCollider.enabled = false;
     }
+
+    public void EnableSkillSwordCollider()
+    {
+        if (_swordCollider != null)
+            _swordCollider.enabled = true;
+    }
+
+    public void DisableSkillSwordCollider()
+    {
+        if (_swordCollider != null)
+            _swordCollider.enabled = false;
+
+        KnightSkill.CurrentSkillAttackPower = 0;
+        KnightSkill.CurrentSkillKey = -1;
+    }
 }
