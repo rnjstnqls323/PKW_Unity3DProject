@@ -61,7 +61,6 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (target != null)
         {
             RemoveDuplicateIcons();
-
             ClearPreviousSlot();
 
             foreach (Transform child in target.transform)
@@ -89,14 +88,7 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 slot.AssignSkill(skillKey);
             }
 
-            foreach (Transform child in target.transform)
-            {
-                if (child.CompareTag("SkillSlotKey"))
-                {
-                    child.SetAsLastSibling();
-                    break;
-                }
-            }
+            draggingIcon.transform.SetSiblingIndex(0);
         }
         else
         {

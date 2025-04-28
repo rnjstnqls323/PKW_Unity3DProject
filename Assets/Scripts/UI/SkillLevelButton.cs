@@ -31,6 +31,15 @@ public class SkillLevelButton : MonoBehaviour
 
     private void OnClickPlus()
     {
+        if (PlayerKnight.Instance == null)
+            return;
+
+        if (PlayerKnight.Instance.Level < skillData.PlayerLevel)
+        {
+            Debug.Log($"{skillData.Name} 스킬은 플레이어 레벨 {skillData.PlayerLevel} 이상이어야 습득할 수 있습니다.");
+            return;
+        }
+
         if (tempLevel >= skillData.MaxLevel)
         {
             Debug.Log($"{skillData.Name} 스킬은 최대 레벨입니다.");

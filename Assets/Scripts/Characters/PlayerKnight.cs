@@ -17,6 +17,7 @@ public class PlayerKnight : MonoBehaviour
     private TextMeshProUGUI _expBarText;
     private TextMeshProUGUI _levelText;
 
+    public int Level => _level;
     private int _level;
     private int _maxLevel = 25;
     private int _levelUpCount;

@@ -37,16 +37,14 @@ public class KnightSkill : MonoBehaviour
     private void TryUseSkillInSlot(int slotNumber)
     {
         GameObject slotObj = GameObject.Find($"SkillSlot{slotNumber}");
-        if (slotObj == null)
-        {
-            Debug.Log($"SkillSlot{slotNumber} 오브젝트가 없습니다.");
-            return;
-        }
+        if (slotObj == null) return;
 
         SkillSlot slot = slotObj.GetComponent<SkillSlot>();
-        if (slot == null || slot.AssignedSkillKey == -1)
+        if (slot == null || slot.AssignedSkillKey == -1) return;
+
+        if (slot.IsCoolingDown())
         {
-            Debug.Log($"SkillSlot{slotNumber}에 스킬이 배치되지 않았습니다.");
+            Debug.Log("스킬 쿨타임 중입니다.");
             return;
         }
 
@@ -62,8 +60,10 @@ public class KnightSkill : MonoBehaviour
         if (PlayerKnight.Instance.CurMp >= skillData.MpCost)
         {
             PlayerKnight.Instance.ConsumeMp(skillData.MpCost);
-
             _animator.SetTrigger(GetAnimationTrigger(skillKey));
+
+            slot.StartCoolTime(skillData.CoolTime);
+
             Debug.Log($"{skillData.Name} 스킬 사용! MP {skillData.MpCost} 소모");
         }
         else

@@ -9,6 +9,7 @@ TagManager:
   - SkillSlot
   - SkillIcon
   - SkillSlotKey
+  - SkillCoolTime
   layers:
   - Default
   - TransparentFX
