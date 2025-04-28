@@ -32,7 +32,6 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         draggingIcon.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
 
         draggingRect = draggingIcon.GetComponent<RectTransform>();
-
         draggingRect.localScale = new Vector3(0.029f, 0.048f, 1f);
 
         draggingIcon.transform.SetAsLastSibling();
@@ -63,9 +62,14 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         {
             RemoveDuplicateIcons();
 
+            ClearPreviousSlot();
+
             foreach (Transform child in target.transform)
             {
-                Destroy(child.gameObject);
+                if (child.CompareTag("SkillIcon"))
+                {
+                    Destroy(child.gameObject);
+                }
             }
 
             draggingIcon.transform.SetParent(target.transform, false);
@@ -78,6 +82,21 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             draggingRect.anchoredPosition = new Vector2(0.1f, 1f);
             draggingRect.sizeDelta = new Vector2(2569f, 1522f);
+
+            SkillSlot slot = target.GetComponent<SkillSlot>();
+            if (slot != null)
+            {
+                slot.AssignSkill(skillKey);
+            }
+
+            foreach (Transform child in target.transform)
+            {
+                if (child.CompareTag("SkillSlotKey"))
+                {
+                    child.SetAsLastSibling();
+                    break;
+                }
+            }
         }
         else
         {
@@ -100,6 +119,20 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 {
                     Destroy(child.gameObject);
                 }
+            }
+        }
+    }
+
+    private void ClearPreviousSlot()
+    {
+        GameObject[] slots = GameObject.FindGameObjectsWithTag("SkillSlot");
+
+        foreach (GameObject slotObj in slots)
+        {
+            SkillSlot slot = slotObj.GetComponent<SkillSlot>();
+            if (slot != null && slot.AssignedSkillKey == skillKey)
+            {
+                slot.ClearSlot();
             }
         }
     }

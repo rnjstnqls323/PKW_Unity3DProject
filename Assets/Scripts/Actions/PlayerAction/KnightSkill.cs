@@ -25,35 +25,63 @@ public class KnightSkill : MonoBehaviour
         if (IsSkill)
             return;
 
-        HandleSkillInput(KeyCode.Alpha1, 101, "TripleSlashSkill");
-        HandleSkillInput(KeyCode.Alpha2, 102, "JumpSkill");
-        HandleSkillInput(KeyCode.Alpha3, 103, "PowerUpSkill");
-        HandleSkillInput(KeyCode.Alpha4, 104, "SpinSlashSkill");
-        HandleSkillInput(KeyCode.Alpha5, 105, "ChargeSkill");
+        for (int i = 1; i <= 5; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+            {
+                TryUseSkillInSlot(i);
+            }
+        }
     }
 
-    private void HandleSkillInput(KeyCode keyCode, int skillKey, string animationTrigger)
+    private void TryUseSkillInSlot(int slotNumber)
     {
-        if (Input.GetKeyDown(keyCode))
+        GameObject slotObj = GameObject.Find($"SkillSlot{slotNumber}");
+        if (slotObj == null)
         {
-            _playerSkillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
+            Debug.Log($"SkillSlot{slotNumber} 오브젝트가 없습니다.");
+            return;
+        }
 
-            if (_playerSkillData.CurLevel <= 0)
-            {
-                Debug.Log($"{_playerSkillData.Name} 스킬 레벨이 0이라 사용할 수 없습니다.");
-                return;
-            }
+        SkillSlot slot = slotObj.GetComponent<SkillSlot>();
+        if (slot == null || slot.AssignedSkillKey == -1)
+        {
+            Debug.Log($"SkillSlot{slotNumber}에 스킬이 배치되지 않았습니다.");
+            return;
+        }
 
-            if (PlayerKnight.Instance.CurMp >= _playerSkillData.MpCost)
-            {
-                PlayerKnight.Instance.ConsumeMp(_playerSkillData.MpCost);
-                _animator.SetTrigger(animationTrigger);
-                Debug.Log($"{_playerSkillData.Name} 스킬 사용! MP {_playerSkillData.MpCost} 소모");
-            }
-            else
-            {
-                Debug.Log($"{_playerSkillData.Name} 스킬 사용 불가 - MP 부족");
-            }
+        int skillKey = slot.AssignedSkillKey;
+        PlayerSkillData skillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
+
+        if (skillData.CurLevel <= 0)
+        {
+            Debug.Log($"{skillData.Name} 스킬 레벨이 0이라 사용할 수 없습니다.");
+            return;
+        }
+
+        if (PlayerKnight.Instance.CurMp >= skillData.MpCost)
+        {
+            PlayerKnight.Instance.ConsumeMp(skillData.MpCost);
+
+            _animator.SetTrigger(GetAnimationTrigger(skillKey));
+            Debug.Log($"{skillData.Name} 스킬 사용! MP {skillData.MpCost} 소모");
+        }
+        else
+        {
+            Debug.Log($"{skillData.Name} 스킬 사용 불가 - MP 부족");
+        }
+    }
+
+    private string GetAnimationTrigger(int skillKey)
+    {
+        switch (skillKey)
+        {
+            case 101: return "TripleSlashSkill";
+            case 102: return "JumpSkill";
+            case 103: return "PowerUpSkill";
+            case 104: return "SpinSlashSkill";
+            case 105: return "ChargeSkill";
+            default: return "";
         }
     }
 }

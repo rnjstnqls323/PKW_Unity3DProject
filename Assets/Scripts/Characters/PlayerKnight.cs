@@ -61,7 +61,7 @@ public class PlayerKnight : MonoBehaviour
         UpdateExpBar();
         UpdateLevelText();
 
-        Debug.Log($"플레이어 시작 스테이터스:\n레벨: {_level}\nHP: {_curHp}\nMP: {_curMp}\n공격력: {_attackPower}");
+        Debug.Log($"플레이어 시작 공격력:\n공격력: {_attackPower}");
     }
 
     private void Update()
@@ -85,7 +85,6 @@ public class PlayerKnight : MonoBehaviour
     private void GainExp(float amount)
     {
         _curExp += amount;
-        //Debug.Log($"경험치 획득: {amount} / 현재 경험치: {_curExp} / 최대 경험치: {_maxExp}");
 
         while (_curExp >= _maxExp)
         {
@@ -126,20 +125,18 @@ public class PlayerKnight : MonoBehaviour
         UpdateExpBar();
         UpdateLevelText();
 
-        Debug.Log($"플레이어 현제 스테이터스:\n레벨: {_level}\nHP: {_curHp}\nMP: {_curMp}\n공격력: {_attackPower}");
+        Debug.Log($"플레이어 현제 공격력:\n공격력: {_attackPower}");
     }
 
     public void GetDamage(int damage)
     {
         _curHp -= damage;
-        Debug.Log($"플레이어 피격! 현재 HP: {_curHp}");
 
         UpdateHpBar();
 
         if (_curHp <= 0)
         {
             _curHp = 0;
-            Debug.Log("플레이어 사망");
 
             _animator.SetTrigger("Death");
         }

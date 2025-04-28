@@ -439,6 +439,7 @@
 "Assets/Scripts/Manager/PlayerSkillDataManager.cs"
 "Assets/Scripts/UI/SkillIcon.cs"
 "Assets/Scripts/UI/SkillLevelButton.cs"
+"Assets/Scripts/UI/SkillSlot.cs"
 "Assets/Scripts/UI/SkillWindow.cs"
 "Assets/Scripts/Utility/Singleton.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
