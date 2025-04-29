@@ -16,6 +16,8 @@ public class PlayerKnight : MonoBehaviour
     private TextMeshProUGUI _mpBarText;
     private TextMeshProUGUI _expBarText;
     private TextMeshProUGUI _levelText;
+    private GameObject _buffIconObject;
+    private Image _buffTimerImage;
 
     public int Level => _level;
     private int _level;
@@ -28,11 +30,22 @@ public class PlayerKnight : MonoBehaviour
     private float _curExp;
     private float _maxExp;
     private int _attackPower;
+
     private bool _isPowerUpBuffActive = false;
     public bool IsPowerUpBuffActive => _isPowerUpBuffActive;
+
     private float _buffDuration = 0f;
     private float _buffTimer = 0f;
+
+    private float _buffFillDuration = 0f;
+    private float _buffFillTimer = 0f;
     private float _attackPowerBeforeBuff = 0f;
+
+    private bool _isBlinking = false;
+    private float _blinkTimer = 0f;
+    private float _blinkInterval = 0.3f;
+    private bool _isVisible = true;
+    private float _blinkSpeed = 5f;
 
     public int AttackPower { get { return _attackPower; } }
     public int CurMp { get { return _curMp; } }
@@ -52,6 +65,16 @@ public class PlayerKnight : MonoBehaviour
         _expBarImage = GameObject.Find("PlayerExpBar").GetComponent<Image>();
         _expBarText = GameObject.Find("PlayerExpBarText").GetComponentInChildren<TextMeshProUGUI>();
         _levelText = GameObject.Find("LevelText").GetComponent<TextMeshProUGUI>();
+
+        _buffIconObject = GameObject.Find("BuffDescriptionTimeIcon");
+        if (_buffIconObject != null)
+        {
+            Transform timerTransform = _buffIconObject.transform.Find("BuffDescriptionTime");
+            if (timerTransform != null)
+                _buffTimerImage = timerTransform.GetComponent<Image>();
+
+            _buffIconObject.SetActive(false);
+        }
 
         _level = 1;
         _maxHp = 10;
@@ -140,7 +163,6 @@ public class PlayerKnight : MonoBehaviour
     public void GetDamage(int damage)
     {
         _curHp -= damage;
-
         UpdateHpBar();
 
         if (_curHp <= 0)
@@ -158,7 +180,9 @@ public class PlayerKnight : MonoBehaviour
     public void ActivatePowerUpBuff(int attackPowerMultiplier, int duration)
     {
         if (_isPowerUpBuffActive)
-            return;
+        {
+            _attackPower = (int)_attackPowerBeforeBuff;
+        }
 
         _isPowerUpBuffActive = true;
         _buffDuration = duration;
@@ -166,6 +190,20 @@ public class PlayerKnight : MonoBehaviour
 
         _attackPowerBeforeBuff = _attackPower;
         _attackPower *= attackPowerMultiplier;
+
+        if (_buffIconObject != null)
+            _buffIconObject.SetActive(true);
+
+        if (_buffTimerImage != null)
+        {
+            _buffFillDuration = duration;
+            _buffFillTimer = 0f;
+            _buffTimerImage.fillAmount = 1f;
+        }
+
+        _isBlinking = false;
+        _blinkTimer = 0f;
+        _isVisible = true;
 
         Debug.Log($"버프 발동! 공격력 {attackPowerMultiplier}배 상승: {_attackPower}");
     }
@@ -176,11 +214,45 @@ public class PlayerKnight : MonoBehaviour
             return;
 
         _buffTimer += Time.deltaTime;
+        _buffFillTimer += Time.deltaTime;
+
+        if (_buffTimerImage != null && _buffFillDuration > 0)
+        {
+            float remaining = Mathf.Clamp01(1f - (_buffFillTimer / _buffFillDuration));
+            _buffTimerImage.fillAmount = remaining;
+
+            if (remaining <= 0.286f && !_isBlinking)
+            {
+                _isBlinking = true;
+                _blinkTimer = 0f;
+                _isVisible = true;
+            }
+        }
+
+        if (_isBlinking && _buffIconObject != null)
+        {
+            CanvasGroup canvasGroup = _buffIconObject.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+                canvasGroup = _buffIconObject.AddComponent<CanvasGroup>();
+
+            float alpha = 0.5f + 0.5f * Mathf.Sin(Time.time * _blinkSpeed);
+            canvasGroup.alpha = alpha;
+        }
 
         if (_buffTimer >= _buffDuration)
         {
             _isPowerUpBuffActive = false;
             _attackPower = (int)_attackPowerBeforeBuff;
+
+            if (_buffIconObject != null)
+            {
+                _buffIconObject.SetActive(false);
+                _isBlinking = false;
+
+                CanvasGroup canvasGroup = _buffIconObject.GetComponent<CanvasGroup>();
+                if (canvasGroup != null)
+                    canvasGroup.alpha = 1f;
+            }
 
             Debug.Log($"버프 종료! 공격력 복구: {_attackPower}");
 

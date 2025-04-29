@@ -9,7 +9,7 @@ public class Minotaurs : MonoBehaviour
     }
 
     private Animator _animator;
-    private int _hp = 8000000;
+    private int _hp = 50;
 
     private void Awake()
     {

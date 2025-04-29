@@ -20,10 +20,7 @@ public class KnightSkill : MonoBehaviour
 
     private void Update()
     {
-        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking))
-            return;
-
-        if (IsSkill)
+        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || IsSkill)
             return;
 
         for (int i = 1; i <= 5; i++)
@@ -88,6 +85,7 @@ public class KnightSkill : MonoBehaviour
 
                 Debug.Log($"{skillData.Name} 스킬 사용! MP {skillData.MpCost} 소모, 공격력 {skillData.AttackPower}");
             }
+            IsSkill = true;
         }
         else
         {
@@ -106,5 +104,10 @@ public class KnightSkill : MonoBehaviour
             case 105: return "ChargeSkill";
             default: return "";
         }
+    }
+
+    public void EndSkill()
+    {
+        IsSkill = false;
     }
 }
