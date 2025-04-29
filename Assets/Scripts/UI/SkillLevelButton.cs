@@ -68,6 +68,12 @@ public class SkillLevelButton : MonoBehaviour
 
     private void OnClickReset()
     {
+        if (tempLevel == savedLevel || savedLevel == 0)
+        {
+            Debug.Log("리셋할 변경사항이 없거나 스킬 레벨이 0입니다.");
+            return;
+        }
+
         int refundPoint = tempLevel - savedLevel;
         if (refundPoint > 0)
         {
@@ -80,6 +86,17 @@ public class SkillLevelButton : MonoBehaviour
 
     private void OnClickCheck()
     {
+        if (savedLevel == tempLevel)
+        {
+            Debug.Log("변경된 레벨이 없습니다.");
+            return;
+        }
+        if (tempLevel == 0)
+        {
+            Debug.Log("스킬 레벨이 0이라 저장할 수 없습니다.");
+            return;
+        }
+
         savedLevel = tempLevel;
 
         PlayerSkillData currentSkillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
