@@ -74,4 +74,15 @@ public class PlayerSkillDataManager : MonoBehaviour
             _playerSkillDatas[key] = data;
         }
     }
+
+    public void UpdateSkillLevelAndAttackPower(int key, int newLevel, int newAttackPower)
+    {
+        if (_playerSkillDatas.ContainsKey(key))
+        {
+            PlayerSkillData data = _playerSkillDatas[key];
+            data.CurLevel = newLevel;
+            data.AttackPower = newAttackPower;
+            _playerSkillDatas[key] = data;
+        }
+    }
 }

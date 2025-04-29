@@ -81,8 +81,23 @@ public class SkillLevelButton : MonoBehaviour
     private void OnClickCheck()
     {
         savedLevel = tempLevel;
-        PlayerSkillDataManager.Instance.UpdateSkillLevel(skillKey, savedLevel);
-        Debug.Log($"{skillData.Name} 스킬 레벨 확정: Lv.{savedLevel}");
+
+        PlayerSkillData currentSkillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
+
+        if (skillKey == 103)
+        {
+            PlayerSkillDataManager.Instance.UpdateSkillLevel(skillKey, savedLevel);
+            Debug.Log($"{currentSkillData.Name} (버프 스킬) 스킬 레벨 확정: Lv.{savedLevel} (공격력 변동 없음)");
+        }
+        else
+        {
+            int baseAttackPower = currentSkillData.AttackPower;
+            int newAttackPower = baseAttackPower * (int)Mathf.Pow(2, savedLevel - 1);
+
+            PlayerSkillDataManager.Instance.UpdateSkillLevelAndAttackPower(skillKey, savedLevel, newAttackPower);
+
+            Debug.Log($"{currentSkillData.Name} 스킬 레벨 확정: Lv.{savedLevel}, 공격력: {newAttackPower}");
+        }
     }
 
     private void UpdateSkillLevelText()
