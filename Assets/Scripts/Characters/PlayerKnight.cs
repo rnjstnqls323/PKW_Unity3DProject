@@ -28,6 +28,12 @@ public class PlayerKnight : MonoBehaviour
     private float _curExp;
     private float _maxExp;
     private int _attackPower;
+    private bool _isPowerUpBuffActive = false;
+    public bool IsPowerUpBuffActive => _isPowerUpBuffActive;
+    private float _buffDuration = 0f;
+    private float _buffTimer = 0f;
+    private float _attackPowerBeforeBuff = 0f;
+
     public int AttackPower { get { return _attackPower; } }
     public int CurMp { get { return _curMp; } }
 
@@ -81,6 +87,8 @@ public class PlayerKnight : MonoBehaviour
         {
             LevelUp();
         }
+
+        HandleBuffTimer();
     }
 
     private void GainExp(float amount)
@@ -144,6 +152,44 @@ public class PlayerKnight : MonoBehaviour
         else
         {
             _animator.SetTrigger("GetDamage");
+        }
+    }
+
+    public void ActivatePowerUpBuff(int attackPowerMultiplier, int duration)
+    {
+        if (_isPowerUpBuffActive)
+            return;
+
+        _isPowerUpBuffActive = true;
+        _buffDuration = duration;
+        _buffTimer = 0f;
+
+        _attackPowerBeforeBuff = _attackPower;
+        _attackPower *= attackPowerMultiplier;
+
+        Debug.Log($"버프 발동! 공격력 {attackPowerMultiplier}배 상승: {_attackPower}");
+    }
+
+    private void HandleBuffTimer()
+    {
+        if (!_isPowerUpBuffActive)
+            return;
+
+        _buffTimer += Time.deltaTime;
+
+        if (_buffTimer >= _buffDuration)
+        {
+            _isPowerUpBuffActive = false;
+            _attackPower = (int)_attackPowerBeforeBuff;
+
+            Debug.Log($"버프 종료! 공격력 복구: {_attackPower}");
+
+            if (KnightSkill.CurrentSkillKey != -1 && KnightSkill.CurrentSkillKey != 103)
+            {
+                PlayerSkillData skillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(KnightSkill.CurrentSkillKey);
+                KnightSkill.CurrentSkillAttackPower = skillData.AttackPower;
+                Debug.Log($"버프 종료! 스킬 공격력 복구: {KnightSkill.CurrentSkillAttackPower}");
+            }
         }
     }
 

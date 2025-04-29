@@ -6,7 +6,6 @@ public class KnightSkill : MonoBehaviour
     private Animator _animator;
     private KnightAttack _attack;
     private KnightBlock _block;
-    private PlayerSkillData _playerSkillData;
     public static int CurrentSkillAttackPower { get; set; } = 0;
     public static int CurrentSkillKey { get; set; } = -1;
 
@@ -53,6 +52,13 @@ public class KnightSkill : MonoBehaviour
         int skillKey = slot.AssignedSkillKey;
         PlayerSkillData skillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(skillKey);
 
+        int finalSkillAttackPower = skillData.AttackPower;
+
+        if (PlayerKnight.Instance.IsPowerUpBuffActive)
+        {
+            finalSkillAttackPower *= 2;
+        }
+
         if (skillData.CurLevel <= 0)
         {
             Debug.Log($"{skillData.Name} 스킬 레벨이 0이라 사용할 수 없습니다.");
@@ -66,22 +72,26 @@ public class KnightSkill : MonoBehaviour
 
             slot.StartCoolTime(skillData.CoolTime);
 
-            Debug.Log($"{skillData.Name} 스킬 사용! MP {skillData.MpCost} 소모");
+            if (skillKey == 103)
+            {
+                PlayerKnight.Instance.ActivatePowerUpBuff(skillData.AttackPower, skillData.Duration);
+
+                CurrentSkillAttackPower = 0;
+                CurrentSkillKey = -1;
+
+                Debug.Log($"{skillData.Name} 버프 스킬 사용! 공격력 {skillData.AttackPower}배 상승, {skillData.Duration}초 지속 (스킬 공격력도 {CurrentSkillAttackPower}로 적용)");
+            }
+            else
+            {
+                CurrentSkillAttackPower = finalSkillAttackPower;
+                CurrentSkillKey = skillKey;
+
+                Debug.Log($"{skillData.Name} 스킬 사용! MP {skillData.MpCost} 소모, 공격력 {skillData.AttackPower}");
+            }
         }
         else
         {
             Debug.Log($"{skillData.Name} 스킬 사용 불가 - MP 부족");
-        }
-
-        if (skillKey != 103)
-        {
-            CurrentSkillAttackPower = skillData.AttackPower;
-            CurrentSkillKey = skillKey;
-        }
-        else
-        {
-            CurrentSkillAttackPower = 0;
-            CurrentSkillKey = -1;
         }
     }
 

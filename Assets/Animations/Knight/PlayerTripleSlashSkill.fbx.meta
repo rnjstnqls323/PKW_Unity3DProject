@@ -63,7 +63,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.2377953
-        functionName: DisableSkillSwordCollider
+        functionName: DisableSkillSwordColliderOnly
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -77,7 +77,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.37637797
-        functionName: DisableSkillSwordCollider
+        functionName: DisableSkillSwordColliderOnly
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -91,7 +91,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.72283477
-        functionName: DisableSkillSwordCollider
+        functionName: DisableSkillSwordColliderAndResetSkill
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
