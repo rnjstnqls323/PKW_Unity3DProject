@@ -205,7 +205,7 @@ public class PlayerKnight : MonoBehaviour
         _blinkTimer = 0f;
         _isVisible = true;
 
-        Debug.Log($"버프 발동! 공격력 {attackPowerMultiplier}배 상승: {_attackPower}");
+        Debug.Log($"버프 발동! 공격력 {attackPowerMultiplier}배 상승, 일반공격력: {_attackPower}");
     }
 
     private void HandleBuffTimer()
