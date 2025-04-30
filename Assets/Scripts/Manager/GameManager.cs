@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
     public GameObject Minotaurs
     { get { return _minotaurs; } }
 
-    void Awake()
+    private void Awake()
     {
         _instance = this;
-        SpawnPlayer();
+        SpawnPlayer();        
+    }
 
+    private void Start()
+    {
         MinotaursManager.Instance.SpawnAllMinotaurs();
     }
 

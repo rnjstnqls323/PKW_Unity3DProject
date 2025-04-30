@@ -26,10 +26,6 @@ public class MinotaursManager : MonoBehaviour
         {
             monsterParent = monsterObj.transform;
         }
-        else
-        {
-            Debug.LogWarning("하이라키에 'Monster' 오브젝트가 없습니다. 미노타우르스가 월드 루트에 생성됩니다.");
-        }
 
         InitializePool();
     }
