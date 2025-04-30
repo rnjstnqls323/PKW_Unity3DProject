@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\ColliderTriggers\MeleeWeaponTrigger.cs" />
     <Compile Include="Assets\Scripts\UI\SkillIcon.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightBlock.cs" />
+    <Compile Include="Assets\Scripts\Manager\MinotaursManager.cs" />
     <Compile Include="Assets\Scripts\Characters\PlayerKnight.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />

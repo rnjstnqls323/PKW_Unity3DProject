@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
         SpawnPlayer();
-        SpawnMinotaurs();
+
+        MinotaursManager.Instance.SpawnAllMinotaurs();
     }
 
     private void SpawnPlayer()
@@ -28,12 +29,5 @@ public class GameManager : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>("Prefabs/Player");
         
         _player = Instantiate(prefab);
-    }
-
-    private void SpawnMinotaurs()
-    {
-        GameObject minotaursPrefab = Resources.Load<GameObject>("Prefabs/Minotaurs");
-
-        _minotaurs = Instantiate(minotaursPrefab);
     }
 }

@@ -436,6 +436,7 @@
 "Assets/Scripts/Characters/PlayerKnight.cs"
 "Assets/Scripts/ColliderTriggers/MeleeWeaponTrigger.cs"
 "Assets/Scripts/Manager/GameManager.cs"
+"Assets/Scripts/Manager/MinotaursManager.cs"
 "Assets/Scripts/Manager/PlayerSkillDataManager.cs"
 "Assets/Scripts/UI/SkillIcon.cs"
 "Assets/Scripts/UI/SkillLevelButton.cs"

@@ -22,7 +22,11 @@ public class MeleeWeaponTrigger : MonoBehaviour
                 damage = PlayerKnight.Instance.AttackPower;
             }
 
-            Minotaurs.Instance.GetDamage(damage);
+            Minotaurs monster = other.GetComponent<Minotaurs>();
+            if (monster != null)
+            {
+                monster.GetDamage(damage);
+            }
         }
     }
 }

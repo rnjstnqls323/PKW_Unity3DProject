@@ -2,36 +2,36 @@ using UnityEngine;
 
 public class Minotaurs : MonoBehaviour
 {
-    private static Minotaurs _instance;
-    public static Minotaurs Instance
-    {
-        get { return _instance; }
-    }
+    //테스트
+    private static int _globalIdCounter = 1;
+    private int _minotaurId;
 
+    /// ///////////////////////////////////////////
+    
     private Animator _animator;
     private int _hp = 50;
 
     private void Awake()
     {
-        _instance = this;
         _animator = GetComponent<Animator>();
-    }
 
-    private void Start()
-    {
-        Debug.Log($"미노타우르스 시작 체력: {_hp}");
+        _minotaurId = _globalIdCounter++;
+        gameObject.name = $"Minotaurs_{_minotaurId}";
+
+        Debug.Log($"[{gameObject.name}] 시작 체력: {_hp}");
     }
 
     public void GetDamage(int damage)
     {
         _hp -= damage;
-        Debug.Log($"미노타우르스 피격! 현재 HP: {_hp}");
+
+        Debug.Log($"[{gameObject.name}] 피격! 받은 피해: {damage}, 현재 HP: {_hp}");
 
         if (_hp <= 0)
         {
             _hp = 0;
-            Debug.Log("미노타우르스 사망");
 
+            Debug.Log($"[{gameObject.name}] 사망");
             _animator.SetTrigger("Death");
         }
         else
