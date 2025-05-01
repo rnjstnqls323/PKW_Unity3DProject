@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 100}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 0
-  controlID: 103
+  controlID: 111
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 27
+  controlID: 19
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -1083,9 +1083,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 8.327689, y: 99.3664, z: -47.484375}
+    m_Target: {x: 25.203974, y: 59.988617, z: -16.953318}
     speed: 2
-    m_Value: {x: 8.327689, y: 99.3664, z: -47.484375}
+    m_Value: {x: 25.203974, y: 59.988617, z: -16.953318}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1131,9 +1131,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.33258942, y: -0.05106001, z: -0.006946162, w: -0.947363}
+    m_Target: {x: 0.4391404, y: 0.015529929, z: 0.02071384, w: 0.9040482}
     speed: 2
-    m_Value: {x: -0.3308131, y: -0.050787304, z: -0.0069090636, w: -0.9423033}
+    m_Value: {x: 0.43681473, y: 0.016795386, z: 0.019947505, w: 0.89917356}
   m_Size:
     m_Target: 3.886233
     speed: 2
@@ -1402,9 +1402,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f8a40000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 1cfbffff
+      m_SelectedIDs: fea70000
+      m_LastClickedID: 43006
+      m_ExpandedIDs: 1cfbffff8aa80000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1524,8 +1524,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Models/minotaur1/Animations
+    m_Folders: []
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1569,7 +1568,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 2011}
+    scrollPos: {x: 0, y: 2027}
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff0000000072ae000074ae0000b0b30000b2b30000b4b30000b6b30000b8b30000bab30000bcb30000beb30000c0b30000c2b30000c4b30000c6b30000c8b30000cab30000ccb30000ceb30000d0b30000d2b30000d4b30000d6b30000d8b30000dab30000dcb30000deb30000e0b30000e2b30000e4b30000e6b30000e8b30000eab30000ecb30000eeb30000f0b30000f2b30000f4b30000f6b30000f8b30000fab30000fcb30000feb3000000b4000002b4000004b4000006b4000008b400000ab400000cb400000eb4000010b4000012b4000014b4000016b4000018b400001ab400001cb400001eb4000020b4000022b4000024b4000026b4000028b400002ab400002cb400002eb40000
