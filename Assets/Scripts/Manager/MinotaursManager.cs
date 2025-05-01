@@ -11,6 +11,9 @@ public class MinotaursManager : MonoBehaviour
     [SerializeField]
     private Vector3[] spawnPositions;
 
+    [SerializeField]
+    private Transform[] patrolPointGroups;
+
     private List<GameObject> minotaurPool = new List<GameObject>();
     private int poolSize = 7;
 
@@ -51,6 +54,17 @@ public class MinotaursManager : MonoBehaviour
             GameObject minotaur = minotaurPool[i];
             minotaur.transform.position = spawnPositions[i];
             minotaur.SetActive(true);
+
+            MinotaurAI ai = minotaur.GetComponent<MinotaurAI>();
+            if (ai != null && patrolPointGroups.Length > i)
+            {
+                Transform group = patrolPointGroups[i];
+                Transform[] points = new Transform[group.childCount];
+                for (int j = 0; j < points.Length; j++)
+                    points[j] = group.GetChild(j);
+
+                ai.PatrolPoints = points;
+            }
         }
     }
 

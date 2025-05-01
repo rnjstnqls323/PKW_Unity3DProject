@@ -11,6 +11,9 @@ public class MeleeWeaponTrigger : MonoBehaviour
 
         if (other.CompareTag("Monster"))
         {
+            if (other.gameObject == transform.root.gameObject)
+                return;
+
             int damage = 0;
 
             if (KnightSkill.CurrentSkillKey != -1)
