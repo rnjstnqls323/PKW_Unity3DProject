@@ -49,6 +49,7 @@ public class PlayerKnight : MonoBehaviour
 
     public int AttackPower { get { return _attackPower; } }
     public int CurMp { get { return _curMp; } }
+    public bool IsDead { get; private set; } = false;
 
     private void Awake()
     {
@@ -168,7 +169,7 @@ public class PlayerKnight : MonoBehaviour
         if (_curHp <= 0)
         {
             _curHp = 0;
-
+            IsDead = true;
             _animator.SetTrigger("Death");
         }
         else

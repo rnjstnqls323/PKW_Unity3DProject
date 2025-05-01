@@ -25,7 +25,7 @@ public class KnightAttack : MonoBehaviour
         if (IsAttacking)
             return;
 
-        if ((_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill))
+        if ((_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill) || PlayerKnight.Instance.IsDead)
             return;
 
         if (Input.GetKeyDown(KeyCode.E))
