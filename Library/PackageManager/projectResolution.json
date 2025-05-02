@@ -64,26 +64,10 @@
       "version": "1.0.0",
       "source": "builtin"
     },
-    "com.unity.postprocessing@3.4.0": {
-      "name": "com.unity.postprocessing",
-      "resolvedPath": "C:\\Users\\admin\\Documents\\PKW_Project\\PKW_Unity3DProject\\Library\\PackageCache\\com.unity.postprocessing",
-      "fingerprint": "026b2a0827a438e3079df62a60ca03d54961393d",
-      "editorCompatibility": "2019.4.19f1",
-      "version": "3.4.0",
-      "source": "registry"
-    },
     "com.unity.render-pipelines.universal@17.0.3": {
       "name": "com.unity.render-pipelines.universal",
       "resolvedPath": "C:\\Users\\admin\\Documents\\PKW_Project\\PKW_Unity3DProject\\Library\\PackageCache\\com.unity.render-pipelines.universal",
       "fingerprint": "a168de23718db68d8d0d859e62b8a5cad5a48a0c",
-      "editorCompatibility": "6000.0.0a1",
-      "version": "17.0.3",
-      "source": "builtin"
-    },
-    "com.unity.shadergraph@17.0.3": {
-      "name": "com.unity.shadergraph",
-      "resolvedPath": "C:\\Users\\admin\\Documents\\PKW_Project\\PKW_Unity3DProject\\Library\\PackageCache\\com.unity.shadergraph",
-      "fingerprint": "9111176982208cf007caa931c3cf2716ceec4632",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
       "source": "builtin"
@@ -340,13 +324,13 @@
       "version": "17.0.3",
       "source": "builtin"
     },
-    "com.unity.searcher@4.9.2": {
-      "name": "com.unity.searcher",
-      "resolvedPath": "C:\\Users\\admin\\Documents\\PKW_Project\\PKW_Unity3DProject\\Library\\PackageCache\\com.unity.searcher",
-      "fingerprint": "90d011a70418fd5b0f4b8e86df39444d2af228dd",
-      "editorCompatibility": "2019.1.0a1",
-      "version": "4.9.2",
-      "source": "registry"
+    "com.unity.shadergraph@17.0.3": {
+      "name": "com.unity.shadergraph",
+      "resolvedPath": "C:\\Users\\admin\\Documents\\PKW_Project\\PKW_Unity3DProject\\Library\\PackageCache\\com.unity.shadergraph",
+      "fingerprint": "9111176982208cf007caa931c3cf2716ceec4632",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "17.0.3",
+      "source": "builtin"
     },
     "com.unity.render-pipelines.universal-config@17.0.3": {
       "name": "com.unity.render-pipelines.universal-config",
@@ -355,6 +339,14 @@
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
       "source": "builtin"
+    },
+    "com.unity.searcher@4.9.2": {
+      "name": "com.unity.searcher",
+      "resolvedPath": "C:\\Users\\admin\\Documents\\PKW_Project\\PKW_Unity3DProject\\Library\\PackageCache\\com.unity.searcher",
+      "fingerprint": "90d011a70418fd5b0f4b8e86df39444d2af228dd",
+      "editorCompatibility": "2019.1.0a1",
+      "version": "4.9.2",
+      "source": "registry"
     },
     "com.unity.burst@1.8.18": {
       "name": "com.unity.burst",

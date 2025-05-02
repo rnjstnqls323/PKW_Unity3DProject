@@ -175,10 +175,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6203896760853306108}
     m_Modifications:
-    - target: {fileID: -8025064703368778996, guid: 9f1b582a55ff4354e91590e83929fc6c, type: 3}
-      propertyPath: _owner
-      value: 
-      objectReference: {fileID: 7335077671859566327}
     - target: {fileID: 2474045678767703391, guid: 9f1b582a55ff4354e91590e83929fc6c, type: 3}
       propertyPath: m_Name
       value: Paladin_Sword
@@ -248,7 +244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.66
+      value: 32.58699
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -256,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.4
+      value: 23.829584
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74fe1c14c00175845a87a0a9b2e5186b, type: 3}
       propertyPath: m_LocalRotation.w
