@@ -31,12 +31,15 @@ public class Minotaurs : MonoBehaviour
 
         Debug.Log($"[{gameObject.name}] 피격! 받은 피해: {damage}, 현재 HP: {_hp}");
 
+        MinotaurAI ai = GetComponent<MinotaurAI>();
+        if (ai != null)
+            ai.OnHitStart();
+
         if (_hp <= 0)
         {
             _hp = 0;
             _animator.SetTrigger("Death");
 
-            MinotaurAI ai = GetComponent<MinotaurAI>();
             if (ai != null)
                 ai.OnDeath();
 
@@ -44,7 +47,7 @@ public class Minotaurs : MonoBehaviour
             gameObject,
             ai.GetSpawnPoint(),
             ai.PatrolPoints
-        );
+            );
         }
         else
         {

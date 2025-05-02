@@ -25,6 +25,8 @@ public class KnightAttack : MonoBehaviour
         if (IsAttacking)
             return;
 
+        if (PlayerKnight.Instance.IsGettingHit) return;
+
         if ((_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill) || PlayerKnight.Instance.IsDead)
             return;
 
@@ -71,5 +73,11 @@ public class KnightAttack : MonoBehaviour
 
         KnightSkill.CurrentSkillAttackPower = 0;
         KnightSkill.CurrentSkillKey = -1;
+    }
+
+    public void ForceStopAttack()
+    {
+        IsAttacking = false;
+        DisableSwordCollider();
     }
 }

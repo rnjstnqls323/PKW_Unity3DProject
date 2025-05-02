@@ -49,6 +49,8 @@ public class PlayerKnight : MonoBehaviour
 
     public int AttackPower { get { return _attackPower; } }
     public int CurMp { get { return _curMp; } }
+    private bool _isGettingHit = false;
+    public bool IsGettingHit => _isGettingHit;
     public bool IsDead { get; private set; } = false;
 
     private void Awake()
@@ -163,8 +165,12 @@ public class PlayerKnight : MonoBehaviour
 
     public void GetDamage(int damage)
     {
+        if (_isGettingHit) return;
+
         _curHp -= damage;
         UpdateHpBar();
+
+        _isGettingHit = true;
 
         if (_curHp <= 0)
         {
@@ -176,6 +182,24 @@ public class PlayerKnight : MonoBehaviour
         {
             _animator.SetTrigger("GetDamage");
         }
+    }
+
+    public void OnHitStart()
+    {
+        _isGettingHit = true;
+
+        KnightAttack attack = GetComponent<KnightAttack>();
+        if (attack != null)
+            attack.ForceStopAttack();
+
+        KnightSkill skill = GetComponent<KnightSkill>();
+        if (skill != null)
+            skill.ForceStopSkill();
+    }
+
+    public void OnHitEnd()
+    {
+        _isGettingHit = false;
     }
 
     public void ActivatePowerUpBuff(int attackPowerMultiplier, int duration)

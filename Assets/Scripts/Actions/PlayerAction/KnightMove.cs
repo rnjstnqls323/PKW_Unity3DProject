@@ -20,6 +20,8 @@ public class KnightMove : MonoBehaviour
 
     void Update()
     {
+        if (PlayerKnight.Instance.IsGettingHit) return;
+
         if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill) || PlayerKnight.Instance.IsDead)
         {
             if (_animator != null)

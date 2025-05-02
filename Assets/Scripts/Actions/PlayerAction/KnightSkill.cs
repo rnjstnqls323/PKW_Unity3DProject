@@ -20,6 +20,8 @@ public class KnightSkill : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerKnight.Instance.IsGettingHit) return;
+
         if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || IsSkill || PlayerKnight.Instance.IsDead)
             return;
 
@@ -109,5 +111,12 @@ public class KnightSkill : MonoBehaviour
     public void EndSkill()
     {
         IsSkill = false;
+    }
+
+    public void ForceStopSkill()
+    {
+        IsSkill = false;
+        KnightSkill.CurrentSkillKey = -1;
+        KnightSkill.CurrentSkillAttackPower = 0;
     }
 }

@@ -88,13 +88,14 @@ public class MinotaursManager : MonoBehaviour
 
         minotaur.transform.position = spawnPosition;
         minotaur.GetComponent<Minotaurs>().ResetMinotaur();
-        minotaur.GetComponent<MinotaurAI>().enabled = true;
-        minotaur.SetActive(true);
 
+        MinotaurAI ai = minotaur.GetComponent<MinotaurAI>();
+        ai.enabled = true;
         if (patrolPoints != null)
-        {
-            minotaur.GetComponent<MinotaurAI>().PatrolPoints = patrolPoints;
-        }
+            ai.PatrolPoints = patrolPoints;
+        ai.Initialize();
+
+        minotaur.SetActive(true);
 
         Debug.Log($"{minotaur.name} 리스폰 완료!");
     }

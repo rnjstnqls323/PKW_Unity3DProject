@@ -24,6 +24,7 @@ public class MinotaurAI : MonoBehaviour
     
     private MinotaurState _currentState = MinotaurState.Patrol;
     private bool _isAttacking = false;
+    private bool _isGettingHit = false;
 
     private void Start()
     {
@@ -37,7 +38,8 @@ public class MinotaurAI : MonoBehaviour
 
     private void Update()
     {
-        if (GetComponent<Minotaurs>().IsDead || _isAttacking) return;
+        if (GetComponent<Minotaurs>().IsDead) return;
+        if (_isGettingHit) return;
 
         float distance = Vector3.Distance(transform.position, _player.position);
 
@@ -86,7 +88,17 @@ public class MinotaurAI : MonoBehaviour
 
     private void GoToNextPatrol()
     {
+        //if (PatrolPoints.Length == 0) return;
+        //_agent.SetDestination(PatrolPoints[_patrolIndex].position);
+        //_patrolIndex = (_patrolIndex + 1) % PatrolPoints.Length;
+
         if (PatrolPoints.Length == 0) return;
+        if (_agent == null || !_agent.isOnNavMesh)
+        {
+            //Debug.LogWarning($"{gameObject.name} - NavMesh에 올라가지 않아 SetDestination 실패!");
+            return;
+        }
+
         _agent.SetDestination(PatrolPoints[_patrolIndex].position);
         _patrolIndex = (_patrolIndex + 1) % PatrolPoints.Length;
     }
@@ -99,15 +111,19 @@ public class MinotaurAI : MonoBehaviour
 
     private void Attack()
     {
+        if (_isAttacking) return;
+
         _agent.SetDestination(transform.position);
         transform.LookAt(_player);
         _animator.SetFloat("Speed", 0f);
 
-        if (!_isAttacking)
-        {
-            _isAttacking = true;
-            _animator.SetTrigger("Attack");
-        }
+        _isAttacking = true;
+        _animator.SetTrigger("Attack");
+    }
+
+    public void OnAttackStart()
+    {
+        _agent.isStopped = true;
     }
 
     private void ReturnToSpawn()
@@ -121,6 +137,19 @@ public class MinotaurAI : MonoBehaviour
         return _spawnPoint;
     }
 
+    public void OnHitStart()
+    {
+        _isGettingHit = true;
+        _agent.isStopped = true;
+    }
+
+    public void OnHitEnd()
+    {
+        _isGettingHit = false;
+        _agent.isStopped = false;
+        _isAttacking = false;
+    }
+
     public void OnDeath()
     {
         _agent.isStopped = true;
@@ -129,7 +158,19 @@ public class MinotaurAI : MonoBehaviour
 
     public void EndAttack()
     {
+        _agent.isStopped = false;
         _isAttacking = false;
+    }
+    public void Initialize()
+    {
+        _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
+        _player = GameManager.Instance.Player.transform;
+        _spawnPoint = transform.position;
+        _currentState = MinotaurState.Patrol;
+        _isAttacking = false;
+        _isGettingHit = false;
+        GoToNextPatrol();
     }
 
     private void OnDrawGizmosSelected()
