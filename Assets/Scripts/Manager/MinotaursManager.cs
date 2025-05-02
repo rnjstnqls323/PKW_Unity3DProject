@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -75,27 +74,5 @@ public class MinotaursManager : MonoBehaviour
         {
             minotaur.SetActive(false);
         }
-    }
-
-    public void RespawnMinotaur(GameObject minotaur, Vector3 spawnPosition, Transform[] patrolPoints)
-    {
-        StartCoroutine(RespawnCoroutine(minotaur, spawnPosition, patrolPoints));
-    }
-
-    private IEnumerator RespawnCoroutine(GameObject minotaur, Vector3 spawnPosition, Transform[] patrolPoints)
-    {
-        yield return new WaitForSeconds(10f);
-
-        minotaur.transform.position = spawnPosition;
-        minotaur.GetComponent<Minotaurs>().ResetMinotaur();
-        minotaur.GetComponent<MinotaurAI>().enabled = true;
-        minotaur.SetActive(true);
-
-        if (patrolPoints != null)
-        {
-            minotaur.GetComponent<MinotaurAI>().PatrolPoints = patrolPoints;
-        }
-
-        Debug.Log($"{minotaur.name} 리스폰 완료!");
     }
 }

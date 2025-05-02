@@ -26,9 +26,6 @@ public class KnightBlock : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerKnight.Instance.IsDead)
-            return;
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             StartBlocking();

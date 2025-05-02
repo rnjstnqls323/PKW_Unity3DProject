@@ -20,7 +20,7 @@ public class KnightMove : MonoBehaviour
 
     void Update()
     {
-        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill) || PlayerKnight.Instance.IsDead)
+        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || (_skill != null && _skill.IsSkill))
         {
             if (_animator != null)
                 _animator.SetFloat("Speed", 0f);

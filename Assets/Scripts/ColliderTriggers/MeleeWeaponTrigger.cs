@@ -2,49 +2,33 @@ using UnityEngine;
 
 public class MeleeWeaponTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject _owner;
-
-    public void SetOwner(GameObject owner)
-    {
-        _owner = owner;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (_owner != null && _owner.CompareTag("Monster"))
-            {
-                if (PlayerKnight.Instance.IsDead)
-                    return;
-
-                PlayerKnight.Instance.GetDamage(5);
-            }
+            PlayerKnight.Instance.GetDamage(5);
         }
 
         if (other.CompareTag("Monster"))
         {
-            if (_owner != null && _owner == other.gameObject)
+            if (other.gameObject == transform.root.gameObject)
                 return;
 
-            if (_owner != null && _owner.CompareTag("Player"))
+            int damage = 0;
+
+            if (KnightSkill.CurrentSkillKey != -1)
             {
-                int damage = 0;
+                damage = KnightSkill.CurrentSkillAttackPower;
+            }
+            else
+            {
+                damage = PlayerKnight.Instance.AttackPower;
+            }
 
-                if (KnightSkill.CurrentSkillKey != -1)
-                {
-                    damage = KnightSkill.CurrentSkillAttackPower;
-                }
-                else
-                {
-                    damage = PlayerKnight.Instance.AttackPower;
-                }
-
-                Minotaurs monster = other.GetComponent<Minotaurs>();
-                if (monster != null)
-                {
-                    monster.GetDamage(damage);
-                }
+            Minotaurs monster = other.GetComponent<Minotaurs>();
+            if (monster != null)
+            {
+                monster.GetDamage(damage);
             }
         }
     }

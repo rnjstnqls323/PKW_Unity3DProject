@@ -39,25 +39,11 @@ public class Minotaurs : MonoBehaviour
             MinotaurAI ai = GetComponent<MinotaurAI>();
             if (ai != null)
                 ai.OnDeath();
-
-            MinotaursManager.Instance.RespawnMinotaur(
-            gameObject,
-            ai.GetSpawnPoint(),
-            ai.PatrolPoints
-        );
         }
         else
         {
             _animator.SetTrigger("GetDamage");
         }
-    }
-
-    public void ResetMinotaur()
-    {
-        _hp = 50;
-        _animator.Rebind();
-        _animator.Update(0f);
-        Debug.Log($"[{gameObject.name}] 리스폰됨. 체력: {_hp}");
     }
 
     public void DeactivateMinotaurs()
