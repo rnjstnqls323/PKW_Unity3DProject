@@ -12,7 +12,7 @@ public enum MinotaurState
 public class MinotaurAI : MonoBehaviour
 {
     public float chaseRange = 10f;
-    public float attackRange = 7f;
+    public float attackRange = 2f;
     public float returnRange = 15f;
     public Transform[] PatrolPoints;
 
