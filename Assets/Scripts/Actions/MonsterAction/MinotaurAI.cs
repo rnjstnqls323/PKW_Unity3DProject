@@ -14,7 +14,7 @@ public class MinotaurAI : MonoBehaviour
     public float chaseRange = 10f;
     public float attackRange = 7f;
     public float returnRange = 15f;
-    public Transform[] PatrolPoints;
+    public Transform[] PatrolPoints { get; set; }
 
     private Transform _player;
     private NavMeshAgent _agent;
@@ -114,6 +114,11 @@ public class MinotaurAI : MonoBehaviour
     {
         _agent.SetDestination(_spawnPoint);
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
+    }
+
+    public Vector3 GetSpawnPoint()
+    {
+        return _spawnPoint;
     }
 
     public void OnDeath()

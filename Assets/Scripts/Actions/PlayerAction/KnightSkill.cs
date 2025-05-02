@@ -20,7 +20,7 @@ public class KnightSkill : MonoBehaviour
 
     private void Update()
     {
-        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || IsSkill)
+        if ((_attack != null && _attack.IsAttacking) || (_block != null && _block.IsBlocking) || IsSkill || PlayerKnight.Instance.IsDead)
             return;
 
         for (int i = 1; i <= 5; i++)
