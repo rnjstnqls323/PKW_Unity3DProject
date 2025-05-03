@@ -2623,7 +2623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.8098145}
+  m_AnchoredPosition: {x: 0, y: 4.809784}
   m_SizeDelta: {x: 20, y: 29.620079}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &166705041
@@ -8660,8 +8660,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 166705041}
   m_HandleRect: {fileID: 166705040}
   m_Direction: 2
-  m_Value: 1.0000011
-  m_Size: 0.8215105
+  m_Value: 1.0000018
+  m_Size: 0.7469919
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9802,6 +9802,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1522545166}
   - {fileID: 1577840124}
   - {fileID: 1208394893}
   - {fileID: 2060476502}
@@ -18811,7 +18812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -417.9995, y: 180.95013}
+  m_AnchoredPosition: {x: -417.9995, y: 180.94984}
   m_SizeDelta: {x: 189, y: 918.0996}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1130273392
@@ -24378,6 +24379,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4705524862720774, guid: 4828eb97da272fb45b2babf9c57fe11d, type: 3}
   m_PrefabInstance: {fileID: 1081373168}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1522545165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1522545166}
+  m_Layer: 5
+  m_Name: MonsterHpBarPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1522545166
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522545165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 601665986}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1522863041
 PrefabInstance:
   m_ObjectHideFlags: 0

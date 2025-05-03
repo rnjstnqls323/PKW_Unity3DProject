@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Minotaurs : MonoBehaviour
 {
@@ -9,39 +11,124 @@ public class Minotaurs : MonoBehaviour
     /// ///////////////////////////////////////////
     
     private Animator _animator;
-    private int _hp = 10;
+    private int _maxHp = 10;
+    private int _curHp;
 
-    public bool IsDead => _hp <= 0;
+    public bool IsDead => _curHp <= 0;
+
+    private GameObject _hpBarPrefab;
+    private GameObject _hpBarObject;
+    private Slider _hpSlider;
+
+    private Image _hpFillImage;
+    private Image _hpBLImage;
+    private Image _hpBGImage;
+
+    private Vector3 _hpBarOffset = new Vector3(0, 5.5f, 1);
+    private float _hpBarVisibleTimer = 0f;
+    private float _hpBarVisibleDuration = 3f;
+    private bool _hpBarVisible = false;
+    private bool _isFadingOut = false;
+    private float _fadeSpeed = 5f;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _curHp = _maxHp;
 
         _minotaurId = _globalIdCounter++;
         gameObject.name = $"Minotaurs_{_minotaurId}";
 
-        Debug.Log($"[{gameObject.name}] 시작 체력: {_hp}");
+        _hpBarPrefab = Resources.Load<GameObject>("Prefabs/MonsterUI/MonsterHpBar");
+    }
+
+    private void Start()
+    {
+        GameObject hpBarPanel = GameObject.Find("MonsterHpBarPanel");
+        _hpBarObject = Instantiate(_hpBarPrefab, hpBarPanel.transform);
+        _hpSlider = _hpBarObject.GetComponent<Slider>();
+
+        Transform imageRoot = _hpSlider.transform.Find("MonsterHpBarBG");
+        _hpBGImage = imageRoot.GetComponent<Image>();
+        _hpFillImage = imageRoot.Find("MonsterHp")?.GetComponent<Image>();
+        _hpBLImage = imageRoot.Find("MonsterHpBarBL")?.GetComponent<Image>();
+
+        _hpBarObject.SetActive(false);
+        SetHpBarAlpha(0.5f);
+    }
+
+    private void Update()
+    {
+        if (_hpSlider != null && _hpBarObject.activeSelf)
+        {
+            Vector3 worldPosition = transform.position + _hpBarOffset;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
+
+            if (screenPosition.z > 0)
+            {
+                _hpSlider.transform.position = screenPosition;
+                _hpSlider.value = (float)_curHp / _maxHp;
+            }
+            else
+            {
+                _hpBarObject.SetActive(false);
+            }
+        }
+
+        if (_hpBarVisible)
+        {
+            _hpBarVisibleTimer += Time.deltaTime;
+            if (_hpBarVisibleTimer >= _hpBarVisibleDuration)
+            {
+                _hpBarVisible = false;
+                _isFadingOut = true;
+            }
+        }
+
+        if (_isFadingOut)
+        {
+            float newAlpha = Mathf.Lerp(_hpFillImage.color.a, 0, Time.deltaTime * _fadeSpeed);
+            SetHpBarAlpha(newAlpha);
+
+            if (newAlpha <= 0.05f)
+            {
+                _hpBarObject.SetActive(false);
+                _isFadingOut = false;
+            }
+        }
     }
 
     public void GetDamage(int damage)
     {
         if (IsDead) return;
 
-        _hp -= damage;
+        _curHp -= damage;
+        _curHp = Mathf.Max(0, _curHp);
 
-        Debug.Log($"[{gameObject.name}] 피격! 받은 피해: {damage}, 현재 HP: {_hp}");
+        if (_hpSlider != null)
+        {
+            _hpBarObject.SetActive(true);
+            SetHpBarAlpha(1f);
+            _hpBarVisible = true;
+            _hpBarVisibleTimer = 0f;
+            _isFadingOut = false;
+        }
 
         MinotaurAI ai = GetComponent<MinotaurAI>();
         if (ai != null)
             ai.OnHitStart();
 
-        if (_hp <= 0)
+        if (_curHp <= 0)
         {
-            _hp = 0;
+            _curHp = 0;
+            GetComponent<Collider>().enabled = false;
             _animator.SetTrigger("Death");
 
             if (ai != null)
                 ai.OnDeath();
+
+            _hpBarObject.SetActive(false);
+            _hpBarVisible = false;
 
             MinotaursManager.Instance.RespawnMinotaur(
             gameObject,
@@ -57,7 +144,7 @@ public class Minotaurs : MonoBehaviour
 
     public void ResetMinotaur()
     {
-        _hp = 10;
+        _curHp = _maxHp;
         _animator.Rebind();
         _animator.Update(0f);
 
@@ -65,7 +152,38 @@ public class Minotaurs : MonoBehaviour
         if (effect != null)
             effect.ResetEffects();
 
-        Debug.Log($"[{gameObject.name}] 리스폰됨. 체력: {_hp}");
+        if (_hpBarObject != null)
+        {
+            _hpSlider.value = 1f;
+            _hpBarObject.SetActive(false);
+            SetHpBarAlpha(0.5f);
+            _hpBarVisible = false;
+            _hpBarVisibleTimer = 0f;
+            _isFadingOut = false;
+        }
+
+    }
+
+    private void SetHpBarAlpha(float alpha)
+    {
+        if (_hpBLImage != null)
+        {
+            Color c = _hpBLImage.color;
+            c.a = alpha;
+            _hpBLImage.color = c;
+        }
+        if (_hpFillImage != null)
+        {
+            Color c = _hpFillImage.color;
+            c.a = alpha;
+            _hpFillImage.color = c;
+        }
+        if (_hpBGImage != null)
+        {
+            Color c = _hpBGImage.color;
+            c.a = alpha;
+            _hpBGImage.color = c;
+        }
     }
 
     public void DeactivateMinotaurs()

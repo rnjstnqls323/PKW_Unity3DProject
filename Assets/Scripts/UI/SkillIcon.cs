@@ -24,7 +24,6 @@ public class SkillIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         if (skillData.CurLevel <= 0)
         {
-            Debug.Log($"{skillData.Name} 스킬 레벨이 0이라 배치할 수 없습니다.");
             return;
         }
 

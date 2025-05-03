@@ -289,7 +289,6 @@ public class PlayerKnight : MonoBehaviour
             {
                 PlayerSkillData skillData = PlayerSkillDataManager.Instance.GetPlayerSkillData(KnightSkill.CurrentSkillKey);
                 KnightSkill.CurrentSkillAttackPower = skillData.AttackPower;
-                Debug.Log($"버프 종료! 스킬 공격력 복구: {KnightSkill.CurrentSkillAttackPower}");
             }
         }
     }

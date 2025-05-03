@@ -47,13 +47,11 @@ public class SkillSlot : MonoBehaviour
     public void AssignSkill(int skillKey)
     {
         AssignedSkillKey = skillKey;
-        Debug.Log($"SkillSlot {gameObject.name}¿¡ ½ºÅ³ {skillKey} µî·ÏµÊ");
     }
 
     public void ClearSlot()
     {
         AssignedSkillKey = -1;
-        Debug.Log($"SkillSlot {gameObject.name} ºñ¿öÁü");
     }
 
     public bool IsCoolingDown()

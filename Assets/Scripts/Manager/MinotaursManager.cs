@@ -96,7 +96,5 @@ public class MinotaursManager : MonoBehaviour
         ai.Initialize();
 
         minotaur.SetActive(true);
-
-        Debug.Log($"{minotaur.name} 리스폰 완료!");
     }
 }

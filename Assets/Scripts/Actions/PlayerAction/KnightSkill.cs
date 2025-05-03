@@ -77,15 +77,11 @@ public class KnightSkill : MonoBehaviour
 
                 CurrentSkillAttackPower = 0;
                 CurrentSkillKey = -1;
-
-                Debug.Log($"{skillData.Name} 버프 스킬 사용! 공격력 {skillData.AttackPower}배 상승, {skillData.Duration}초 지속");
             }
             else
             {
                 CurrentSkillAttackPower = finalSkillAttackPower;
                 CurrentSkillKey = skillKey;
-
-                Debug.Log($"{skillData.Name} 스킬 사용! MP {skillData.MpCost} 소모");
             }
             IsSkill = true;
         }
