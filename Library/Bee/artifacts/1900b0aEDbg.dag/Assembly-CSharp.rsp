@@ -444,6 +444,8 @@
 "Assets/Scripts/Characters/Monster/Minotaurs.cs"
 "Assets/Scripts/Characters/PlayerKnight.cs"
 "Assets/Scripts/ColliderTriggers/MeleeWeaponTrigger.cs"
+"Assets/Scripts/Effect/HitEffectController.cs"
+"Assets/Scripts/Effect/MinotaurEffectController.cs"
 "Assets/Scripts/Effect/PlayerEffectController.cs"
 "Assets/Scripts/Manager/GameManager.cs"
 "Assets/Scripts/Manager/MinotaursManager.cs"

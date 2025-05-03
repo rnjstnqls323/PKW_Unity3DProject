@@ -194,7 +194,11 @@ public class PlayerKnight : MonoBehaviour
 
         KnightSkill skill = GetComponent<KnightSkill>();
         if (skill != null)
+        {
             skill.ForceStopSkill();
+            skill.StopAllSkillEffects();
+        }
+            
     }
 
     public void OnHitEnd()

@@ -29,6 +29,9 @@ public class MeleeWeaponTrigger : MonoBehaviour
                 }
 
                 PlayerKnight.Instance.GetDamage(finalDamage);
+
+                Vector3 hitPos = other.ClosestPoint(transform.position);
+                HitEffectController.Instance.PlayHitEffect(hitPos);
             }
         }
 
@@ -54,6 +57,9 @@ public class MeleeWeaponTrigger : MonoBehaviour
                 if (monster != null)
                 {
                     monster.GetDamage(damage);
+
+                    Vector3 hitPos = other.ClosestPoint(transform.position);
+                    HitEffectController.Instance.PlayHitEffect(hitPos);
                 }
             }
         }

@@ -182,4 +182,15 @@ public class KnightSkill : MonoBehaviour
         if (effect != null)
             effect.StopChargeHeavenlySlashEffect();
     }
+
+    public void StopAllSkillEffects()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect == null) return;
+
+        effect.StopBuffEffect();
+
+        effect.StopSkillEffect(105);
+        effect.StopChargeHeavenlySlashEffect();
+    }
 }

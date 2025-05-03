@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Actions\MonsterAction\MinotaursAttack.cs" />
+    <Compile Include="Assets\Scripts\Effect\HitEffectController.cs" />
     <Compile Include="Assets\Scripts\UI\SkillSlot.cs" />
     <Compile Include="Assets\Scripts\UI\SkillWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\Actions\MonsterAction\MinotaurAI.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerSkillDataManager.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightAttack.cs" />
+    <Compile Include="Assets\Scripts\Effect\MinotaurEffectController.cs" />
     <Compile Include="Assets\Scripts\Characters\Monster\Minotaurs.cs" />
   </ItemGroup>
   <ItemGroup>

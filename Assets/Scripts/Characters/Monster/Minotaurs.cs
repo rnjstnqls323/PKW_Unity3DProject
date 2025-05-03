@@ -57,9 +57,14 @@ public class Minotaurs : MonoBehaviour
 
     public void ResetMinotaur()
     {
-        _hp = 50;
+        _hp = 10;
         _animator.Rebind();
         _animator.Update(0f);
+
+        MinotaurEffectController effect = GetComponentInChildren<MinotaurEffectController>();
+        if (effect != null)
+            effect.ResetEffects();
+
         Debug.Log($"[{gameObject.name}] 리스폰됨. 체력: {_hp}");
     }
 

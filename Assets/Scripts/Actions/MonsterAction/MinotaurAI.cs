@@ -68,12 +68,19 @@ public class MinotaurAI : MonoBehaviour
                 break;
 
             case MinotaurState.Return:
-                if (Vector3.Distance(transform.position, _spawnPoint) < 0.5f)
+                if (distance < chaseRange)
+                {
+                    _currentState = MinotaurState.Chase;
+                }
+                else if (Vector3.Distance(transform.position, _spawnPoint) < 0.5f)
                 {
                     _currentState = MinotaurState.Patrol;
                     GoToNextPatrol();
                 }
-                ReturnToSpawn();
+                else
+                {
+                    ReturnToSpawn();
+                }
                 break;
         }
     }
@@ -88,10 +95,6 @@ public class MinotaurAI : MonoBehaviour
 
     private void GoToNextPatrol()
     {
-        //if (PatrolPoints.Length == 0) return;
-        //_agent.SetDestination(PatrolPoints[_patrolIndex].position);
-        //_patrolIndex = (_patrolIndex + 1) % PatrolPoints.Length;
-
         if (PatrolPoints.Length == 0) return;
         if (_agent == null || !_agent.isOnNavMesh)
         {
@@ -153,6 +156,18 @@ public class MinotaurAI : MonoBehaviour
     {
         _agent.isStopped = true;
         this.enabled = false;
+
+        Collider bodyCollider = GetComponent<Collider>();
+        if (bodyCollider != null)
+            bodyCollider.enabled = false;
+
+        MeleeWeaponTrigger weapon = GetComponentInChildren<MeleeWeaponTrigger>();
+        if (weapon != null)
+        {
+            Collider weaponCol = weapon.GetComponent<Collider>();
+            if (weaponCol != null)
+                weaponCol.enabled = false;
+        }
     }
 
     public void EndAttack()
@@ -170,6 +185,17 @@ public class MinotaurAI : MonoBehaviour
         _isAttacking = false;
         _isGettingHit = false;
         GoToNextPatrol();
+
+        Collider bodyCollider = GetComponent<Collider>();
+        if (bodyCollider != null)
+            bodyCollider.enabled = true;
+    }
+
+    public void SpawnAttackEffect()
+    {
+        MinotaurEffectController effect = GetComponentInChildren<MinotaurEffectController>();
+        if (effect != null)
+            effect.PlayAttackEffect();
     }
 
     private void OnDrawGizmosSelected()
