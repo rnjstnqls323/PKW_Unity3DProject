@@ -80,4 +80,11 @@ public class KnightAttack : MonoBehaviour
         IsAttacking = false;
         DisableSwordCollider();
     }
+
+    public void SpawnAttackEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.PlayAttackEffect();
+    }
 }

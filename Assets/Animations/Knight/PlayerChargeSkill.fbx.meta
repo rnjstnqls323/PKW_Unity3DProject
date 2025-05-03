@@ -55,6 +55,27 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.13262671
+        functionName: SpawnChargeHeavenlySlashEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4195011
+        functionName: StopChargeHeavenlySlashEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.51702297
+        functionName: SpawnSkillEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.5496064
         functionName: EnableSkillSwordCollider
         data: 
@@ -64,6 +85,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.6062993
         functionName: DisableSkillSwordColliderAndResetSkill
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8256332
+        functionName: StopHeavenlySlashEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -9,7 +9,7 @@ public class Minotaurs : MonoBehaviour
     /// ///////////////////////////////////////////
     
     private Animator _animator;
-    private int _hp = 50;
+    private int _hp = 10;
 
     public bool IsDead => _hp <= 0;
 

@@ -3894,10 +3894,10 @@ GameObject:
   - component: {fileID: 4414871117303439920}
   - component: {fileID: -7222088608517201084}
   - component: {fileID: 1788158924137410093}
+  - component: {fileID: -5457548257962677184}
   - component: {fileID: 2246705090295752460}
   - component: {fileID: 6369759482151269735}
   - component: {fileID: 2078226793919068998}
-  - component: {fileID: -5457548257962677184}
   m_Layer: 0
   m_Name: Minotaurs
   m_TagString: Monster
@@ -3969,6 +3969,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _axeCollider: {fileID: 4754097710172773545}
+--- !u!114 &-5457548257962677184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414871117303439921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb2930d0b34eca4a93f8376fd25cf05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRange: 10
+  attackRange: 3
+  returnRange: 15
 --- !u!136 &2246705090295752460
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4041,21 +4056,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-5457548257962677184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414871117303439921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb2930d0b34eca4a93f8376fd25cf05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseRange: 10
-  attackRange: 3
-  returnRange: 15
 --- !u!1 &4414871117353324497
 GameObject:
   m_ObjectHideFlags: 0

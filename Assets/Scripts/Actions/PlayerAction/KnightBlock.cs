@@ -14,7 +14,6 @@ public class KnightBlock : MonoBehaviour
     private Vector3 originalRotation;
     private bool isRotationSet = false;
 
-
     private void Awake()
     {
         _animator = GetComponent<Animator>();

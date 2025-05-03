@@ -18,7 +18,17 @@ public class MeleeWeaponTrigger : MonoBehaviour
                 if (PlayerKnight.Instance.IsDead)
                     return;
 
-                PlayerKnight.Instance.GetDamage(5);
+                int baseDamage = 6;
+                int finalDamage = baseDamage;
+
+
+                KnightBlock block = other.GetComponent<KnightBlock>();
+                if (block != null && block.IsBlocking)
+                {
+                    finalDamage = Mathf.CeilToInt(baseDamage * 0.1f);
+                }
+
+                PlayerKnight.Instance.GetDamage(finalDamage);
             }
         }
 

@@ -119,4 +119,67 @@ public class KnightSkill : MonoBehaviour
         KnightSkill.CurrentSkillKey = -1;
         KnightSkill.CurrentSkillAttackPower = 0;
     }
+
+    public void PlayTripleSlashEffect1()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.PlayTripleSlashEffect(1);
+    }
+
+    public void PlayTripleSlashEffect2()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.PlayTripleSlashEffect(2);
+    }
+
+    public void PlayTripleSlashEffect3()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.PlayTripleSlashEffect(3);
+    }
+
+    public void SpawnSkillEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null && CurrentSkillKey != 103)
+            effect.PlaySkillEffect(CurrentSkillKey);
+    }
+
+    public void StopHeavenlySlashEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.StopSkillEffect(105);
+    }
+
+    public void SpawnBuffEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.PlayBuffEffect();
+    }
+
+    public void StopBuffEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.StopBuffEffect();
+    }
+
+    public void SpawnChargeHeavenlySlashEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.PlayChargeHeavenlySlashEffect();
+    }
+
+    public void StopChargeHeavenlySlashEffect()
+    {
+        PlayerEffectController effect = GetComponentInChildren<PlayerEffectController>();
+        if (effect != null)
+            effect.StopChargeHeavenlySlashEffect();
+    }
 }

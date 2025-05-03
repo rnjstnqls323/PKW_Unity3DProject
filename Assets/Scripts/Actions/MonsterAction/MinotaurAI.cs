@@ -95,7 +95,6 @@ public class MinotaurAI : MonoBehaviour
         if (PatrolPoints.Length == 0) return;
         if (_agent == null || !_agent.isOnNavMesh)
         {
-            //Debug.LogWarning($"{gameObject.name} - NavMesh에 올라가지 않아 SetDestination 실패!");
             return;
         }
 
