@@ -130,6 +130,9 @@ public class Minotaurs : MonoBehaviour
             _hpBarObject.SetActive(false);
             _hpBarVisible = false;
 
+            PlayerKnight.Instance.SendMessage("GainExp", 50.95f);
+            InventoryWindow.Instance?.AddGold(100);
+
             MinotaursManager.Instance.RespawnMinotaur(
             gameObject,
             ai.GetSpawnPoint(),

@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightMove.cs" />
     <Compile Include="Assets\Scripts\Actions\MonsterAction\MinotaurAI.cs" />
     <Compile Include="Assets\Scripts\UI\DamageTextManager.cs" />
+    <Compile Include="Assets\Scripts\UI\InventoryWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerSkillDataManager.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightAttack.cs" />
     <Compile Include="Assets\Scripts\Effect\MinotaurEffectController.cs" />
