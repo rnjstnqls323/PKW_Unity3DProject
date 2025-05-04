@@ -182,6 +182,9 @@ public class PlayerKnight : MonoBehaviour
         {
             _animator.SetTrigger("GetDamage");
         }
+
+        Vector3 hitPos = transform.position + Vector3.up * 2f;
+        DamageTextManager.Instance.ShowDamage(damage, hitPos, true);
     }
 
     public void OnHitStart()

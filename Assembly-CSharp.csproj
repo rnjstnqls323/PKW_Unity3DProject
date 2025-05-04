@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\UI\SkillSlot.cs" />
     <Compile Include="Assets\Scripts\UI\SkillWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UI\DamageTextController.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightSkill.cs" />
     <Compile Include="Assets\Scripts\Effect\PlayerEffectController.cs" />
     <Compile Include="Assets\Scripts\ColliderTriggers\MeleeWeaponTrigger.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightMove.cs" />
     <Compile Include="Assets\Scripts\Actions\MonsterAction\MinotaurAI.cs" />
+    <Compile Include="Assets\Scripts\UI\DamageTextManager.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerSkillDataManager.cs" />
     <Compile Include="Assets\Scripts\Actions\PlayerAction\KnightAttack.cs" />
     <Compile Include="Assets\Scripts\Effect\MinotaurEffectController.cs" />
