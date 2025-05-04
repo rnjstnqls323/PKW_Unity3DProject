@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class DamageTextController : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class DamageTextController : MonoBehaviour
         StartCoroutine(FadeOut());
     }
 
-    private System.Collections.IEnumerator FadeOut()
+    private IEnumerator FadeOut()
     {
         float timer = 0f;
         Vector3 startPos = transform.position;
