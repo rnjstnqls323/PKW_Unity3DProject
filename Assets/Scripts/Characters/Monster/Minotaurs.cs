@@ -132,6 +132,8 @@ public class Minotaurs : MonoBehaviour
 
             PlayerKnight.Instance.SendMessage("GainExp", 50.95f);
             InventoryWindow.Instance?.AddGold(100);
+            ItemIcon.Instance?.AddItem("HpPotion");
+            ItemIcon.Instance?.AddItem("MpPotion");
 
             MinotaursManager.Instance.RespawnMinotaur(
             gameObject,
