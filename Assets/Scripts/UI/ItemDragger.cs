@@ -9,6 +9,7 @@ public class ItemDragger : MonoBehaviour
     private string _dragItemName;
     private InventorySlot _originSlot;
     private Transform _originItem;
+    private ItemQuickSlot _targetQuickSlot;
 
     public bool IsDragging => _dragItem != null;
 
@@ -56,32 +57,36 @@ public class ItemDragger : MonoBehaviour
 
     private void TryDrop()
     {
-        InventorySlot targetSlot = null;
-
         foreach (var slot in FindObjectsOfType<InventorySlot>())
         {
-            if (RectTransformUtility.RectangleContainsScreenPoint(
-                slot.GetComponent<RectTransform>(), Input.mousePosition))
+            if (RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), Input.mousePosition))
             {
-                targetSlot = slot;
-                break;
+                HandleDropOnSlot(slot);
+                return;
             }
         }
 
-        if (_originItem == null || _originSlot == null)
+        foreach (var quickSlot in FindObjectsOfType<ItemQuickSlot>())
         {
-            Debug.LogWarning("originItem or originSlot is null.");
+            if (RectTransformUtility.RectangleContainsScreenPoint(quickSlot.GetComponent<RectTransform>(), Input.mousePosition))
+            {
+                HandleDropOnQuickSlot(quickSlot);
+                return;
+            }
+        }
+
+        CancelDrag();
+    }
+
+    private void HandleDropOnSlot(InventorySlot targetSlot)
+    {
+        if (_originSlot == targetSlot)
+        {
             CancelDrag();
             return;
         }
 
-        if (targetSlot == null)
-        {
-            CancelDrag();
-            return;
-        }
-
-        if (targetSlot == _originSlot)
+        if (_originItem == null)
         {
             CancelDrag();
             return;
@@ -91,15 +96,24 @@ public class ItemDragger : MonoBehaviour
 
         if (targetItem != null)
         {
-            targetItem.SetParent(null);
-            _originItem.SetParent(null);
-
             targetItem.SetParent(_originSlot.transform);
             ResetRect(targetItem.GetComponent<RectTransform>());
+
+            _originItem.SetParent(targetSlot.transform);
+            ResetRect(_originItem.GetComponent<RectTransform>());
+        }
+        else
+        {
+            _originItem.SetParent(targetSlot.transform);
+            ResetRect(_originItem.GetComponent<RectTransform>());
         }
 
-        _originItem.SetParent(targetSlot.transform);
-        ResetRect(_originItem.GetComponent<RectTransform>());
+        CancelDrag();
+    }
+
+    private void HandleDropOnQuickSlot(ItemQuickSlot quickSlot)
+    {
+        quickSlot.AssignItem(_dragItemName);
 
         CancelDrag();
     }

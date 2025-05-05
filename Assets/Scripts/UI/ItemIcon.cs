@@ -49,7 +49,6 @@ public class ItemIcon : MonoBehaviour
         Transform slot = FindFirstEmptySlot();
         if (slot == null)
         {
-            Debug.LogWarning("빈 인벤토리 슬롯이 없습니다.");
             return;
         }
 
@@ -103,15 +102,17 @@ public class ItemIcon : MonoBehaviour
         rt.anchorMin = new Vector2(1f, 1f);
         rt.anchorMax = new Vector2(1f, 1f);
         rt.pivot = new Vector2(1f, 1f);
-        rt.anchoredPosition = new Vector2(-10f, -125.32f);
+        rt.anchoredPosition = new Vector2(1f, -96.5f);
         rt.sizeDelta = new Vector2(30f, 30f);
-        rt.localScale = Vector3.one;
+        rt.localScale = new Vector3(3.2f, 2f, 2f);
     }
 
     private void UpdateItemCountUI(string itemName)
     {
         GameObject icon = _itemIcons[itemName];
         TextMeshProUGUI text = icon.GetComponentInChildren<TextMeshProUGUI>();
+        int count = _itemCounts[itemName];
+
         if (text == null)
         {
             CreateCountText(icon.transform, itemName);
@@ -119,6 +120,14 @@ public class ItemIcon : MonoBehaviour
         else
         {
             text.text = _itemCounts[itemName].ToString();
+        }
+
+        foreach (ItemQuickSlot slot in FindObjectsOfType<ItemQuickSlot>())
+        {
+            if (slot.HasItem(itemName))
+            {
+                slot.UpdateCountText(count);
+            }
         }
     }
     
@@ -132,5 +141,12 @@ public class ItemIcon : MonoBehaviour
     public void RegisterSlot(string itemName, InventorySlot slot)
     {
         _itemSlots[itemName] = slot;
+    }
+
+    public int GetItemCount(string itemName)
+    {
+        if (_itemCounts.TryGetValue(itemName, out int count))
+            return count;
+        return 0;
     }
 }

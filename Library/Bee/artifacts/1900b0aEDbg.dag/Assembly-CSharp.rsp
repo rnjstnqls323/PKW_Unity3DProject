@@ -457,6 +457,8 @@
 "Assets/Scripts/UI/InventoryWindow.cs"
 "Assets/Scripts/UI/ItemDragger.cs"
 "Assets/Scripts/UI/ItemIcon.cs"
+"Assets/Scripts/UI/ItemQuickSlot.cs"
+"Assets/Scripts/UI/ItemQuickSlotManager.cs"
 "Assets/Scripts/UI/SkillIcon.cs"
 "Assets/Scripts/UI/SkillLevelButton.cs"
 "Assets/Scripts/UI/SkillSlot.cs"

@@ -3770,6 +3770,7 @@ GameObject:
   - component: {fileID: 192672856}
   - component: {fileID: 192672858}
   - component: {fileID: 192672857}
+  - component: {fileID: 192672859}
   m_Layer: 5
   m_Name: ItemQuickSlot1
   m_TagString: Untagged
@@ -3835,6 +3836,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192672855}
   m_CullTransparentMesh: 1
+--- !u!114 &192672859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192672855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52e5028d056f4478ba527f176a92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curItemTextPrefab: {fileID: 1901237386403923383, guid: 8de98f0b67602154bae0af6d224906b3, type: 3}
 --- !u!1001 &193711538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10291,8 +10305,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 166705041}
   m_HandleRect: {fileID: 166705040}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.8215062
+  m_Value: 0.9999996
+  m_Size: 0.82149917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17560,6 +17574,7 @@ GameObject:
   - component: {fileID: 880877534}
   - component: {fileID: 880877536}
   - component: {fileID: 880877535}
+  - component: {fileID: 880877537}
   m_Layer: 5
   m_Name: ItemQuickSlot6
   m_TagString: Untagged
@@ -17625,6 +17640,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880877533}
   m_CullTransparentMesh: 1
+--- !u!114 &880877537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880877533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52e5028d056f4478ba527f176a92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curItemTextPrefab: {fileID: 1901237386403923383, guid: 8de98f0b67602154bae0af6d224906b3, type: 3}
 --- !u!1 &883541704
 GameObject:
   m_ObjectHideFlags: 0
@@ -18354,6 +18382,7 @@ GameObject:
   - component: {fileID: 919933124}
   - component: {fileID: 919933126}
   - component: {fileID: 919933125}
+  - component: {fileID: 919933127}
   m_Layer: 5
   m_Name: ItemQuickSlot3
   m_TagString: Untagged
@@ -18419,6 +18448,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919933123}
   m_CullTransparentMesh: 1
+--- !u!114 &919933127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919933123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52e5028d056f4478ba527f176a92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curItemTextPrefab: {fileID: 1901237386403923383, guid: 8de98f0b67602154bae0af6d224906b3, type: 3}
 --- !u!1 &927536656
 GameObject:
   m_ObjectHideFlags: 0
@@ -22352,7 +22394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -417.9995, y: 180.95033}
+  m_AnchoredPosition: {x: -417.9995, y: 180.95036}
   m_SizeDelta: {x: 189, y: 918.0996}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1130273392
@@ -23827,7 +23869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -744, y: -135.46014}
+  m_AnchoredPosition: {x: -744, y: -135.45999}
   m_SizeDelta: {x: 189, y: 945.8876}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1248786000
@@ -26708,6 +26750,7 @@ GameObject:
   - component: {fileID: 1388152710}
   - component: {fileID: 1388152712}
   - component: {fileID: 1388152711}
+  - component: {fileID: 1388152713}
   m_Layer: 5
   m_Name: ItemQuickSlot4
   m_TagString: Untagged
@@ -26773,6 +26816,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388152709}
   m_CullTransparentMesh: 1
+--- !u!114 &1388152713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388152709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52e5028d056f4478ba527f176a92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curItemTextPrefab: {fileID: 1901237386403923383, guid: 8de98f0b67602154bae0af6d224906b3, type: 3}
 --- !u!1 &1388263557
 GameObject:
   m_ObjectHideFlags: 0
@@ -28996,6 +29052,7 @@ GameObject:
   - component: {fileID: 1519637368}
   - component: {fileID: 1519637370}
   - component: {fileID: 1519637369}
+  - component: {fileID: 1519637371}
   m_Layer: 5
   m_Name: ItemQuickSlot2
   m_TagString: Untagged
@@ -29061,6 +29118,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519637367}
   m_CullTransparentMesh: 1
+--- !u!114 &1519637371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519637367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52e5028d056f4478ba527f176a92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curItemTextPrefab: {fileID: 1901237386403923383, guid: 8de98f0b67602154bae0af6d224906b3, type: 3}
 --- !u!4 &1520717927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4996405836812464, guid: 078375d89d068ff43b690e53ac911589, type: 3}
@@ -31229,6 +31299,7 @@ GameObject:
   - component: {fileID: 1655260192}
   - component: {fileID: 1655260193}
   - component: {fileID: 1655260195}
+  - component: {fileID: 1655260196}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -31347,6 +31418,18 @@ MonoBehaviour:
   goldText: {fileID: 184514868}
   inventoryWindowObject: {fileID: 185564580}
   closeButton: {fileID: 82220212}
+--- !u!114 &1655260196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655260187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d850fe7aa2528b4684d3c2e6dc0bd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1659728015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31803,6 +31886,7 @@ GameObject:
   - component: {fileID: 1691790824}
   - component: {fileID: 1691790826}
   - component: {fileID: 1691790825}
+  - component: {fileID: 1691790827}
   m_Layer: 5
   m_Name: ItemQuickSlot5
   m_TagString: Untagged
@@ -31868,6 +31952,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691790823}
   m_CullTransparentMesh: 1
+--- !u!114 &1691790827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691790823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52e5028d056f4478ba527f176a92a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curItemTextPrefab: {fileID: 1901237386403923383, guid: 8de98f0b67602154bae0af6d224906b3, type: 3}
 --- !u!4 &1693082657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4179742568086396, guid: 958c539e6f5b3da4e988c157ff999d76, type: 3}
@@ -39671,8 +39768,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 403218942}
   m_HandleRect: {fileID: 403218941}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.605092
+  m_Value: 1
+  m_Size: 0.6050883
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
