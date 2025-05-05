@@ -130,6 +130,8 @@ public class Minotaurs : MonoBehaviour
             _hpBarObject.SetActive(false);
             _hpBarVisible = false;
 
+            GetTextPopupManager.Instance?.ShowExpAndGold(50.95f, 100);
+
             PlayerKnight.Instance.SendMessage("GainExp", 50.95f);
             InventoryWindow.Instance?.AddGold(100);
             ItemIcon.Instance?.AddItem("HpPotion");

@@ -18,6 +18,7 @@ public class ItemIcon : MonoBehaviour
     private Dictionary<string, int> _itemCounts = new();
     private Dictionary<string, GameObject> _itemIcons = new();
     private Dictionary<string, InventorySlot> _itemSlots = new();
+    private Dictionary<string, int> _itemCount = new Dictionary<string, int>();
 
     private void Awake()
     {
@@ -32,12 +33,14 @@ public class ItemIcon : MonoBehaviour
 
     public void AddItem(string itemName)
     {
+        bool iconExists = _itemIcons.ContainsKey(itemName) && _itemIcons[itemName] != null;
+
         if (!_itemCounts.ContainsKey(itemName))
             _itemCounts[itemName] = 0;
 
         _itemCounts[itemName]++;
 
-        if (_itemIcons.ContainsKey(itemName))
+        if (iconExists)
         {
             UpdateItemCountUI(itemName);
             return;
@@ -49,6 +52,7 @@ public class ItemIcon : MonoBehaviour
         Transform slot = FindFirstEmptySlot();
         if (slot == null)
         {
+            Debug.LogWarning("빈 인벤토리 슬롯이 없습니다.");
             return;
         }
 
@@ -70,6 +74,29 @@ public class ItemIcon : MonoBehaviour
 
         if (_itemCounts[itemName] > 1)
             CreateCountText(slot, itemName);
+    }
+
+    public void DecreaseItemCount(string itemName)
+    {
+        if (!_itemCounts.ContainsKey(itemName)) return;
+
+        _itemCounts[itemName] = Mathf.Max(0, _itemCounts[itemName] - 1);
+        UpdateItemCountUI(itemName);
+
+        if (_itemCounts[itemName] == 0)
+        {
+            if (_itemIcons.ContainsKey(itemName))
+            {
+                GameObject icon = _itemIcons[itemName];
+                if (icon != null)
+                    Destroy(icon);
+
+                _itemIcons.Remove(itemName);
+            }
+
+            _itemCounts.Remove(itemName);
+            _itemSlots.Remove(itemName);
+        }
     }
 
     public GameObject GetItemPrefab(string itemName)
@@ -109,25 +136,32 @@ public class ItemIcon : MonoBehaviour
 
     private void UpdateItemCountUI(string itemName)
     {
-        GameObject icon = _itemIcons[itemName];
-        TextMeshProUGUI text = icon.GetComponentInChildren<TextMeshProUGUI>();
-        int count = _itemCounts[itemName];
+        if (!_itemIcons.ContainsKey(itemName)) return;
 
-        if (text == null)
+        GameObject icon = _itemIcons[itemName];
+        if (icon == null)
         {
-            CreateCountText(icon.transform, itemName);
+            _itemIcons.Remove(itemName);
+            return;
+        }
+
+        TextMeshProUGUI text = icon.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (_itemCounts[itemName] > 1)
+        {
+            if (text == null)
+            {
+                CreateCountText(icon.transform, itemName);
+            }
+            else
+            {
+                text.text = _itemCounts[itemName].ToString();
+            }
         }
         else
         {
-            text.text = _itemCounts[itemName].ToString();
-        }
-
-        foreach (ItemQuickSlot slot in FindObjectsOfType<ItemQuickSlot>())
-        {
-            if (slot.HasItem(itemName))
-            {
-                slot.UpdateCountText(count);
-            }
+            if (text != null)
+                Destroy(text.gameObject);
         }
     }
     
@@ -145,8 +179,14 @@ public class ItemIcon : MonoBehaviour
 
     public int GetItemCount(string itemName)
     {
-        if (_itemCounts.TryGetValue(itemName, out int count))
-            return count;
-        return 0;
+        return _itemCounts.TryGetValue(itemName, out int count) ? count : 0;
+    }
+
+    public void UpdateAllInventorySlotTexts()
+    {
+        foreach (InventorySlot slot in FindObjectsOfType<InventorySlot>())
+        {
+            slot.UpdateCountText();
+        }
     }
 }

@@ -48,7 +48,10 @@ public class PlayerKnight : MonoBehaviour
     private float _blinkSpeed = 5f;
 
     public int AttackPower { get { return _attackPower; } }
+    public int CurHp { get { return _curHp; } }
+    public int MaxHp { get { return _maxHp; } }
     public int CurMp { get { return _curMp; } }
+    public int MaxMp { get { return _maxMp; } }
     private bool _isGettingHit = false;
     public bool IsGettingHit => _isGettingHit;
     public bool IsDead { get; private set; } = false;
@@ -207,6 +210,18 @@ public class PlayerKnight : MonoBehaviour
     public void OnHitEnd()
     {
         _isGettingHit = false;
+    }
+
+    public void HealHp(int amount)
+    {
+        _curHp = Mathf.Min(_curHp + amount, _maxHp);
+        UpdateHpBar();
+    }
+
+    public void HealMp(int amount)
+    {
+        _curMp = Mathf.Min(_curMp + amount, _maxMp);
+        UpdateMpBar();
     }
 
     public void ActivatePowerUpBuff(int attackPowerMultiplier, int duration)

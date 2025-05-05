@@ -453,6 +453,7 @@
 "Assets/Scripts/UI/DamageTextController.cs"
 "Assets/Scripts/UI/DamageTextManager.cs"
 "Assets/Scripts/UI/DraggableItem.cs"
+"Assets/Scripts/UI/GetTextPopupManager.cs"
 "Assets/Scripts/UI/InventorySlot.cs"
 "Assets/Scripts/UI/InventoryWindow.cs"
 "Assets/Scripts/UI/ItemDragger.cs"

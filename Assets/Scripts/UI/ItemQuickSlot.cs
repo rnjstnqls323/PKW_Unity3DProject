@@ -165,4 +165,9 @@ public class ItemQuickSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             _iconObject = null;
         }
     }
+
+    public string GetItemName()
+    {
+        return _assignedItem;
+    }
 }
