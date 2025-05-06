@@ -43,37 +43,48 @@ public class ItemIcon : MonoBehaviour
         if (iconExists)
         {
             UpdateItemCountUI(itemName);
-            return;
         }
-
-        GameObject prefab = GetItemPrefab(itemName);
-        if (prefab == null) return;
-
-        Transform slot = FindFirstEmptySlot();
-        if (slot == null)
+        else
         {
-            Debug.LogWarning("빈 인벤토리 슬롯이 없습니다.");
-            return;
+            GameObject prefab = GetItemPrefab(itemName);
+            if (prefab == null) return;
+
+            Transform slot = FindFirstEmptySlot();
+            if (slot == null)
+            {
+                Debug.LogWarning("빈 인벤토리 슬롯이 없습니다.");
+                return;
+            }
+
+            GameObject icon = Instantiate(prefab, slot);
+            _itemIcons[itemName] = icon;
+
+            RectTransform rt = icon.GetComponent<RectTransform>();
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+            rt.localScale = Vector3.one;
+
+            InventorySlot slotComponent = slot.GetComponent<InventorySlot>();
+            RegisterSlot(itemName, slotComponent);
+
+            DraggableItem drag = icon.AddComponent<DraggableItem>();
+            drag.Initialize(itemName, prefab, slotComponent);
+
+            if (_itemCounts[itemName] > 1)
+                CreateCountText(slot, itemName);
         }
 
-        GameObject icon = Instantiate(prefab, slot);
-        _itemIcons[itemName] = icon;
-
-        RectTransform rt = icon.GetComponent<RectTransform>();
-        rt.anchorMin = Vector2.zero;
-        rt.anchorMax = Vector2.one;
-        rt.offsetMin = Vector2.zero;
-        rt.offsetMax = Vector2.zero;
-        rt.localScale = Vector3.one;
-
-        InventorySlot slotComponent = slot.GetComponent<InventorySlot>();
-        RegisterSlot(itemName, slotComponent);
-
-        DraggableItem drag = icon.AddComponent<DraggableItem>();
-        drag.Initialize(itemName, prefab, slotComponent);
-
-        if (_itemCounts[itemName] > 1)
-            CreateCountText(slot, itemName);
+        ItemQuickSlot[] quickSlots = FindObjectsOfType<ItemQuickSlot>();
+        foreach (var slot in quickSlots)
+        {
+            if (slot.GetItemName() == itemName)
+            {
+                int count = GetItemCount(itemName);
+                slot.UpdateCountText(count);
+            }
+        }
     }
 
     public void DecreaseItemCount(string itemName)
