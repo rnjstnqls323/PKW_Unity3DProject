@@ -58,13 +58,13 @@ public class ItemQuickSlotManager : MonoBehaviour
         {
             if (player == null || player.CurHp >= player.MaxHp) return;
 
-            player.HealHp(1);
+            player.HealHp(70);
         }
         else if (itemName == "MpPotion")
         {
             if (player == null || player.CurMp >= player.MaxMp) return;
 
-            player.HealMp(2);
+            player.HealMp(10);
         }
         else return;
 
