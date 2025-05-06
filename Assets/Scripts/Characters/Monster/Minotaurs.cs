@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Minotaurs : MonoBehaviour
 {
@@ -130,12 +131,18 @@ public class Minotaurs : MonoBehaviour
             _hpBarObject.SetActive(false);
             _hpBarVisible = false;
 
-            GetTextPopupManager.Instance?.ShowExpAndGold(50.95f, 100);
-
             PlayerKnight.Instance.SendMessage("GainExp", 50.95f);
             InventoryWindow.Instance?.AddGold(100);
             ItemIcon.Instance?.AddItem("HpPotion");
             ItemIcon.Instance?.AddItem("MpPotion");
+
+            Dictionary<string, int> items = new Dictionary<string, int>
+            {
+                { "HpPotion", 1 },
+                { "MpPotion", 1 }
+            };
+
+            GetTextPopupManager.Instance?.ShowExpGoldAndItems(50.95f, 100, items);
 
             MinotaursManager.Instance.RespawnMinotaur(
             gameObject,
